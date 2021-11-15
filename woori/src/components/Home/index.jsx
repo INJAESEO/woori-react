@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Footer from "../common/Footer";
+import Map from "./Map";
+import Post from "./Post";
 import * as S from "./style";
 
 function Home() {
   return (
     <>
       <S.Container>
-        hello
-        <S.Header isTrue={false}>dkssud</S.Header>
+        <Map />
+        <Post />
       </S.Container>
+
       <Footer />
     </>
   );
