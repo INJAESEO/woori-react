@@ -6,13 +6,11 @@ import { useNavigate } from "react-router-dom";
 
 function SignUp() {
   // let user = useContext(userContext);
-
   let navigate = useNavigate();
-
   // 이름, 비밀번호
   let [username, setUsername] = useState("");
   let [password, setPassword] = useState("");
-  let [passwordConfirm, setPasswordConfirm] = useState("");
+  let [passwordConfirm, setPasswordConfirm] = useState(""); 
   // 오류메시지
   // let [usernameMessage, setUsernameMessage] = useState("")
   // let [passwordMessage, setPasswordMessage] = useState("")
