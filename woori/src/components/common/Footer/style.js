@@ -2,11 +2,12 @@ import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  max-width: 420px;
+  max-width: 375px;
   height: 72px;
   position: fixed;
   bottom: 0;
   margin: auto;
+  background-color: white;
 
   display: flex;
   justify-content: space-around;

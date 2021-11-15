@@ -20,7 +20,7 @@ function SignUp() {
   let [isPassword, setIsPassword] = useState(false);
 
   const signup = async (userData) => {
-    axios({
+    const response = await axios({
       method: "post",
       url: "/user-api/user/",
       data: userData,
@@ -31,6 +31,7 @@ function SignUp() {
       })
       .then(() => navigate("/createprofile"))
       .catch((err) => console.log(err));
+    return response;
   };
 
   function onSubmitHandler(e) {
