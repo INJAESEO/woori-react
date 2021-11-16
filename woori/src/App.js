@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Router from "./pages/Router";
 import { createGlobalStyle } from "styled-components";
 import GlobalStyle from "./GlobalStyle";
+import { CookiesProvider } from "react-cookie";
 
 // 같은 변수값을 공유할 범위 설정
 // export let userContext = React.createContext();
@@ -15,7 +16,9 @@ function App() {
       {/* 같은 값을 사용할 구조를 감싼다 */}
       <GlobalStyle />
       {/* <userContext.Provider> */}
-      <Router />
+      <CookiesProvider>
+        <Router />
+      </CookiesProvider>
       {/* </userContext.Provider> */}
     </>
   );

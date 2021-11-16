@@ -8,16 +8,16 @@ function SignUp() {
   // let user = useContext(userContext);
   let navigate = useNavigate();
   // 이름, 비밀번호
-  let [username, setUsername] = useState("");
-  let [password, setPassword] = useState("");
-  let [passwordConfirm, setPasswordConfirm] = useState(""); 
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState(""); 
   // 오류메시지
   // let [usernameMessage, setUsernameMessage] = useState("")
   // let [passwordMessage, setPasswordMessage] = useState("")
   // let [passwordConfirmMessage, setPasswordConfirmMessage] = useState("")
   // 유효성 검사
-  let [isName, setIsName] = useState(false);
-  let [isPassword, setIsPassword] = useState(false);
+  const [isName, setIsName] = useState(false);
+  const [isPassword, setIsPassword] = useState(false);
 
   const signup = async (userData) => {
     const response = await axios({
@@ -29,7 +29,7 @@ function SignUp() {
       .then((res) => {
         console.log(res);
       })
-      .then(() => navigate("/createprofile"))
+      .then(() => navigate("/login"))
       .catch((err) => console.log(err));
     return response;
   };
