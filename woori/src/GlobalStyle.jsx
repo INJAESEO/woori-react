@@ -1,19 +1,47 @@
-import { createGlobalStyle } from "styled-components";
+import { Children } from "react";
+import styled, { createGlobalStyle } from "styled-components";
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyleWrapper = createGlobalStyle`
   *, *::before, *::after {
     box-sizing: border-box;
   }
 
-  body {
-    font-family: "Helvetica", "Arial", sans-serif;
-    line-height: 1.5;
-    max-width: 375px;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
+  html {
+    padding: 0;
+    margin: 0;
+  }
+
+  body { 
+    padding: 0;
+    margin: 0;
   }
 `;
+
+const Container = styled.div`
+  position: relative;
+  @media (min-width: 375px) {
+    background-color: lemonchiffon;
+  }
+`;
+
+const Body = styled.div`
+  max-width: 375px;
+  margin: 0 auto;
+  background-color: white;
+  @media (min-width: 420px) {
+    min-height: 100vh;
+  }
+`;
+
+function GlobalStyle({ children }) {
+  return (
+    <>
+      <GlobalStyleWrapper />
+      <Container>
+        <Body>{children}</Body>
+      </Container>
+    </>
+  );
+}
 
 export default GlobalStyle;

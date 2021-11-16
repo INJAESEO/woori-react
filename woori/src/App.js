@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import Router from "./pages/Router";
-import { createGlobalStyle } from "styled-components";
 import GlobalStyle from "./GlobalStyle";
 import { CookiesProvider } from "react-cookie";
 
@@ -14,12 +13,13 @@ function App() {
   return (
     <>
       {/* 같은 값을 사용할 구조를 감싼다 */}
-      <GlobalStyle />
-      {/* <userContext.Provider> */}
-      <CookiesProvider>
-        <Router />
-      </CookiesProvider>
-      {/* </userContext.Provider> */}
+      <GlobalStyle>
+        {/* <userContext.Provider> */}
+        <CookiesProvider>
+          <Router />
+        </CookiesProvider>
+        {/* </userContext.Provider> */}
+      </GlobalStyle>
     </>
   );
 }

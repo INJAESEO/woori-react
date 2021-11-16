@@ -12,12 +12,14 @@ const Post = () => {
       {isDdayModalOpen && (
         <DdayModal isOpen={isDdayModalOpen} setIsOpen={setIsDdayModalOpen} />
       )}
-      <S.Container
-        onClick={() => setIsPostOpen((isPostOpen) => !isPostOpen)}
-        isOpen={isPostOpen}
-      >
+      <S.Container isOpen={isPostOpen}>
+        <S.Background
+          onClick={() => setIsPostOpen((isPostOpen) => !isPostOpen)}
+        />
         <S.Header>
-          <S.Dday onClick={() => setIsDdayModalOpen(true)}>😍입력하세요</S.Dday>
+          <S.Dday onClick={() => setIsDdayModalOpen(true)}>
+            😍입력하세요😍
+          </S.Dday>
           <S.ProfileWrapper>
             <img src="https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F37%2F201604181854386741.jpg" />
             <p>❤️</p>

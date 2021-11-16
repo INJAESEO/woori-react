@@ -8,6 +8,7 @@ function Home() {
   return (
     <>
       <S.Container>
+        <S.PlusButton>+</S.PlusButton>
         <Map />
         <Post />
       </S.Container>

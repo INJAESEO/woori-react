@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
@@ -8,6 +8,8 @@ export const Container = styled.div`
   bottom: 0;
   margin: auto;
   background-color: white;
+
+  z-index: 100;
 
   display: flex;
   justify-content: space-around;
