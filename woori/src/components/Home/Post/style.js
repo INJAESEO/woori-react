@@ -3,12 +3,12 @@ import styled, { css } from "styled-components";
 export const Container = styled.div`
   width: 100%;
   height: 30vh;
-  background-color: aliceblue;
+  background-color: white;
   border-radius: 16px 16px 0 0;
   position: absolute;
   bottom: 0;
-  padding: 16px;
   overflow: hidden;
+  z-index: 10;
   ${(props) =>
     props.isOpen &&
     css`
@@ -19,7 +19,15 @@ export const Container = styled.div`
   transition: height 0.3s;
 `;
 
+export const Background = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 10;
+`;
+
 export const Header = styled.div`
+  padding: 16px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,6 +38,7 @@ export const Header = styled.div`
 export const Dday = styled.p`
   margin: 0;
   cursor: pointer;
+  z-index: 120;
 `;
 
 export const ProfileWrapper = styled.div`
