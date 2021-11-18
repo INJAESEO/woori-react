@@ -5,13 +5,12 @@ import * as S from "./style";
 const Post = () => {
   const [isPostOpen, setIsPostOpen] = useState(false);
   const [isDdayModalOpen, setIsDdayModalOpen] = useState(false);
-  useEffect(() => {}, []);
+  // useEffect(() => {}, []);
 
   return (
     <>
-      {isDdayModalOpen && (
-        <DdayModal isOpen={isDdayModalOpen} setIsOpen={setIsDdayModalOpen} />
-      )}
+      <DdayModal isOpen={isDdayModalOpen} setIsOpen={setIsDdayModalOpen} />
+
       <S.Container isOpen={isPostOpen}>
         <S.Background
           onClick={() => setIsPostOpen((isPostOpen) => !isPostOpen)}
