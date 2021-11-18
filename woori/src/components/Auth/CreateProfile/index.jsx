@@ -19,20 +19,20 @@ function CreateProfile() {
     const accessToken = useContext(CookieContext)
     
 
-   
+    // console.log(accessToken.token)
 
-    const createProfile = async (profileData) => {
+    const createProfile = async (formData) => {
         
 
         axios({
             method: 'POST',
             url: "/user-api/profile/",
-            data: profileData,
-            withCredentials: true,
+            data: formData,
             headers: {
-                "Authorization": `Bearer ${accessToken}`,
+                "Authorization": `Token ${accessToken.token}`,
                 "Content-Type": "multipart/form-data"
             },
+            withCredentials: true,
         })
             .then((res) => {
             console.log(res)
@@ -45,28 +45,31 @@ function CreateProfile() {
     }
 
     function onImgUploadHandler(e) {
+        // 프로필 이미지 state 저장
         const imgFile = e.target.files[0];
-        const imgUrl = URL.createObjectURL(imgFile);
         setProfileImg(imgFile)
+        console.log(e.target.files[0])
+
+        // 이미지 미리보기
+        const imgUrl = URL.createObjectURL(imgFile);
+        console.log(`FUCK ${profileImg}`)
         setPreviewImg(imgUrl)
     }
 
     function onSubmitHandler(e) {
         e.preventDefault()
 
-        // const imgData = new FormData();
-        // imgData.append("profileImg", profileImg)
+        // 이미지 포함된 전체 데이터를 FormData로 wrap
+        const formData = new FormData();
+        formData.append("gender", selected)
+        formData.append("nickname", nickname)
+        formData.append("profile_img", profileImg)
 
-        let profileData = {
-            nickname: nickname,
-            gender: selected,
-            profile_img: profileImg
-        }
         if (nickname === "") {
             alert("닉네임을 입력해주세요")
             return false
         } else {
-            return createProfile(profileData)
+            return createProfile(formData)
         }
         
     }
