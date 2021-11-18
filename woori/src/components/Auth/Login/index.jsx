@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, createContext} from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 // 쿠키사용을 위해 라이브러리 설치후 import
 import { useCookies } from 'react-cookie';
+import { SetCookieContext } from '../../../App';
 
 function Login() {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const [cookies, setCookie] = useCookies(['token']);
+    // const [cookies, setCookie] = useCookies(['token']);
 
     let navigate = useNavigate()
 
+    const setCookie = useContext(SetCookieContext)
 
     const login = async (userData) => {
         const response = await axios({
