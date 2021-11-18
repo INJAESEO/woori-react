@@ -37,7 +37,11 @@ function CreateProfile() {
             .then((res) => {
             console.log(res)
             }).then(() => navigate("/connect"))
-        .catch((err)=>{console.log(err)})
+            .catch((err) => {
+                if (formData.profile_img === undefined) {
+                    alert("프로필 사진을 올려주세요")
+                }
+            })
     }
     
     function onSelectionHandler (e) {
