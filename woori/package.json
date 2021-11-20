@@ -40,6 +40,6 @@
     ]
   },
   "devDependencies": {
-    "react-query": "^3.33.1"
+    "react-query": "^3.33.2"
   }
 }
