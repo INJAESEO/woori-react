@@ -11,12 +11,15 @@ function CreateProfile() {
     const [profileImg, setProfileImg] = useState()
     const [previewImg, setPreviewImg] = useState()
     const [nickname, setNickname] = useState("")
+    const [idCode, setIdCode] = useState("")
     const selectList = ["man", "woman"]
     // select에서는 디폴트값이 필요하다
     const [selected, setSelected] = useState("man")
     const navigate = useNavigate();
 
     const accessToken = useContext(CookieContext)
+
+    // export const idContext = createContext()
     
 
     // console.log(accessToken.token)
@@ -35,12 +38,23 @@ function CreateProfile() {
             withCredentials: true,
         })
             .then((res) => {
-            console.log(res)
-            }).then(() => navigate("/connect"))
+                // Response 로 생성된 id_code 값을 state에 저장
+                console.log(res.data.id_code)
+                setIdCode(()=>res.data.id_code)
+                //  
+            })
+            // .then(() => navigate("/connect"))
+            .then(() => {
+                return (
+                    <>
+                        <Connect></Connect>
+                    </>
+                )
+            })
             .catch((err) => {
                 if (formData.profile_img === undefined) {
                     alert("프로필 사진을 올려주세요")
-                }
+                } 
             })
     }
     

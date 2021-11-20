@@ -26,7 +26,9 @@ function Login() {
                 const accessToken = res.data.token;
                 setCookie('token', accessToken)
             })
-            .then(() => navigate("/createprofile"))
+            .then(() =>
+                // 이미 프로필설정과 연결을 마친 경우, 바로 Home으로 가는 설정 해야 함
+                navigate("/createprofile"))
             .catch((err) => console.log(err));
         return response
     }
