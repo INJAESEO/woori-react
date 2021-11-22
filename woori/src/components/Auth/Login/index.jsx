@@ -27,11 +27,13 @@ function Login() {
                 setCookie('token', accessToken)
             })
             .then(() =>
-                // 이미 프로필설정과 연결을 마친 경우, 바로 Home으로 가는 설정 해야 함
+                // 이미 프로필설정과 연결을 마친 경우, 조건부렌더링
                 navigate("/createprofile"))
             .catch((err) => console.log(err));
         return response
     }
+
+
 
 
     function onSubmitHandler(e) {
@@ -44,16 +46,17 @@ function Login() {
 
         if (username === "") {
             alert("아이디를 입력하세요")
-            return false
         } else if (password === "") {
             alert("비밀번호를 입력하세요")
-            return false
         } else {
             return login(userData)
         }
     }
     
+
+
     return (
+        
         <div>
             <h3>로그인해주세요</h3>
 

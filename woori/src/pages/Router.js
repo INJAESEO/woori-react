@@ -6,11 +6,13 @@ import Login from "../components/Auth/Login";
 import SignUp from "../components/Auth/SignUp";
 import Welcome from "../components/Auth/Welcome";
 import Home from "../components/Home";
+import Connect2 from "../components/Auth/Connect";
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/connect2" element={<Connect2 />} />
         <Route path="/" element={<Home />} />
         <Route path="/welcome" element={<Welcome />} />
         <Route path="/signup" element={<SignUp />} />

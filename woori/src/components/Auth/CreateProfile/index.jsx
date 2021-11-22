@@ -2,6 +2,7 @@ import React, { useState, useContext, createContext} from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom"
 import { CookieContext } from '../../../App';
+import Connect from '../Connect';
 
 
 
@@ -40,23 +41,22 @@ function CreateProfile() {
             .then((res) => {
                 // Response 로 생성된 id_code 값을 state에 저장
                 console.log(res.data.id_code)
-                setIdCode(()=>res.data.id_code)
+                setIdCode(() => res.data.id_code)
+                console.log(idCode)
                 //  
             })
-            // .then(() => navigate("/connect"))
-            .then(() => {
-                return (
-                    <>
-                        <Connect></Connect>
-                    </>
-                )
-            })
+            .then(() => navigate("/connect2"))
+            // .then((res) => {
+            //     // console.log(res.data.id_code)
+            // })
             .catch((err) => {
+                // 이미프로필있는 경우도 생각하자 !
                 if (formData.profile_img === undefined) {
                     alert("프로필 사진을 올려주세요")
                 } 
             })
     }
+
     
     function onSelectionHandler (e) {
         setSelected(e.target.value)
@@ -70,7 +70,7 @@ function CreateProfile() {
 
         // 이미지 미리보기
         const imgUrl = URL.createObjectURL(imgFile);
-        console.log(`FUCK ${profileImg}`)
+        // console.log(`FUCK ${profileImg}`)
         setPreviewImg(imgUrl)
     }
 
