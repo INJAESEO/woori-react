@@ -6,19 +6,34 @@ import Login from "../components/Auth/Login";
 import SignUp from "../components/Auth/SignUp";
 import Welcome from "../components/Auth/Welcome";
 import Home from "../components/Home";
-import Connect2 from "../components/Auth/Connect";
+import PrivateRoute from "../components/PrivateRoute";
+import PublicRoute from "../components/PublicRoute";
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/connect2" element={<Connect2 />} />
-        <Route path="/" element={<Home />} />
-        <Route path="/welcome" element={<Welcome />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/createprofile" element={<CreateProfile />} />
-        <Route path="/connect" element={<Connect />} />
+        <PrivateRoute exact path="/" element={<Home />} />
+        <PublicRoute
+          restricted={false}
+          exact
+          path="/welcome"
+          element={<Welcome />}
+        />
+        <PublicRoute
+          restricted={true}
+          exact
+          path="/signup"
+          element={<SignUp />}
+        />
+        <PublicRoute
+          restricted={true}
+          exact
+          path="/login"
+          element={<Login />}
+        />
+        <PrivateRoute exact path="/createprofile" element={<CreateProfile />} />
+        <PrivateRoute exact path="/connect" element={<Connect />} />
 
         {/* <Route path="/page1/*" element={<Page1 />} />
         <Route path="/page2/*" element={<Page2 />} />
