@@ -94,6 +94,7 @@ function MapContainer({
   }, [searchPlace]);
 
   const handleLocation = (item) => {
+    console.log(item.y + "/" + item.x);
     setLocation(() => item.address_name);
     setPlace(() => item.place_name);
     setLatitude(() => item.y);
