@@ -4,7 +4,7 @@ import { ReactComponent as HomeSVG } from "../../../assets/icon/home.svg";
 import { ReactComponent as ChatSVG } from "../../../assets/icon/chat.svg";
 import * as S from "./style";
 
-function Footer() {
+function Footer({ type = "Home" }) {
   const [isHome, setIsHome] = useState(true);
   return (
     <S.Container>

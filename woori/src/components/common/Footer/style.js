@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 100%;
   max-width: 375px;
-  height: 72px;
+  height: 52px;
   position: fixed;
   bottom: 0;
   margin: auto;
@@ -30,10 +30,12 @@ export const Section = styled.div`
     text-decoration: none;
   }
 
-  > a > svg > path {
-    width: 24px;
-    height: 24px;
-    fill: ${({ isHome }) => (isHome ? "black" : "#8C94A4")};
+  svg {
+    width: 20px;
+    height: 20px;
+    > path {
+      fill: ${({ isHome }) => (isHome ? "black" : "#8C94A4")};
+    }
   }
 
   > a > div {
