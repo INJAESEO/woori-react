@@ -7,6 +7,8 @@ import SignUp from "../components/Auth/SignUp";
 import Welcome from "../components/Auth/Welcome";
 import Home from "../components/Home";
 import Connect2 from "../components/Auth/Connect";
+import PageNotFound from "../components/PageNotFound";
+import New from "../components/New";
 
 const Router = () => {
   return (
@@ -20,9 +22,11 @@ const Router = () => {
         <Route path="/createprofile" element={<CreateProfile />} />
         <Route path="/connect" element={<Connect />} />
 
+        <Route path="/new" element={<New />} />
+
         {/* <Route path="/page1/*" element={<Page1 />} />
-        <Route path="/page2/*" element={<Page2 />} />
-        <Route path="/*" element={<NotFound />} /> */}
+        <Route path="/page2/*" element={<Page2 />} /> */}
+        <Route path="/*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
   );
