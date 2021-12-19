@@ -38,6 +38,10 @@ function PostInput() {
   );
 
   const onSubmitHandler = useCallback(() => {
+    if (star === 0) {
+      alert("별점을 선택해주세요");
+      return;
+    }
     const formData = new FormData();
     formData.append("title", title);
     formData.append("content", content);
