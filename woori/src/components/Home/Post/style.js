@@ -7,8 +7,9 @@ export const Container = styled.div`
   border-radius: 16px 16px 0 0;
   position: absolute;
   bottom: 0;
-  overflow: hidden;
+  overflow: auto;
   z-index: 10;
+  padding-bottom: 60px;
   ${(props) =>
     props.isOpen &&
     css`
@@ -58,3 +59,49 @@ export const ProfileWrapper = styled.div`
 `;
 
 export const PlaceCount = styled.div``;
+
+export const PostListWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  a {
+    text-decoration: none;
+    color: black;
+  }
+`;
+
+export const PostContainer = styled.div`
+  background-color: #e6e6e6;
+  border-radius: 12px;
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 100;
+  > div {
+    display: flex;
+    align-items: center;
+    > img {
+      width: 110px;
+      height: 110px;
+      border-radius: 6px;
+      margin-right: 10px;
+    }
+    .content {
+      height: 90px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: normal;
+    }
+  }
+  > h3 {
+    margin: 0;
+    > span {
+      font-size: 12px;
+      font-weight: normal;
+    }
+  }
+  p {
+    margin: 0;
+  }
+`;
