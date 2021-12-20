@@ -11,6 +11,7 @@ function New() {
       <S.Container>
         <Location />
         <PostInput />
+        <S.Button>저장</S.Button>
       </S.Container>
     </>
   );
