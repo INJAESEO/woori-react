@@ -6,15 +6,15 @@ import Login from "../components/Auth/Login";
 import SignUp from "../components/Auth/SignUp";
 import Welcome from "../components/Auth/Welcome";
 import Home from "../components/Home";
-import Connect2 from "../components/Auth/Connect";
 import PageNotFound from "../components/PageNotFound";
 import New from "../components/New";
+import ChkResponse from "../components/Auth/Connect/ChkResponse";
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/connect2" element={<Connect2 />} />
+        <Route path="/chkresponse" element={<ChkResponse />} />
         <Route path="/" element={<Home />} />
         <Route path="/welcome" element={<Welcome />} />
         <Route path="/signup" element={<SignUp />} />

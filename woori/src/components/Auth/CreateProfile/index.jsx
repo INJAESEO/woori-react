@@ -45,7 +45,7 @@ function CreateProfile() {
                 console.log(idCode)
                 //  
             })
-            .then(() => navigate("/connect2"))
+            .then(() => navigate("/chkresponse"))
             // .then((res) => {
             //     // console.log(res.data.id_code)
             // })
