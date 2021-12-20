@@ -4,9 +4,9 @@ import * as S from "./style";
 
 export const markerdata = [
   {
-    title: "콜드스퀘어",
-    lat: 37.62197524055062,
-    lng: 127.16017523675508,
+    title: "고려대학교 서울캠퍼스",
+    lat: 37.5898422803883,
+    lng: 127.031685000726,
   },
   {
     title: "하남돼지집",
@@ -25,7 +25,7 @@ export const markerdata = [
   },
 ];
 
-const Map = () => {
+const Map = ({ location }) => {
   const container = useRef(null);
   useEffect(() => {
     mapscript();
@@ -33,7 +33,7 @@ const Map = () => {
 
   const mapscript = () => {
     let options = {
-      center: new kakao.maps.LatLng(37.624915253753194, 127.15122688059974),
+      center: new kakao.maps.LatLng(location.latitude, location.longitude),
       level: 5,
     };
 
