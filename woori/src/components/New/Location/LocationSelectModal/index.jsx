@@ -10,14 +10,14 @@ function LocationSelectModal({
   setLocation,
   setPlace,
   setIsLocation,
+  setLatitude,
+  setLongitude,
 }) {
   // 지도 검색
   const [searchText, handleSearchText, setSearchText] = useInput([]);
   const [searchPlace, setSearchPlace] = useState("");
 
   // 선택한 장소
-  const [latitude, setLatitude] = useState(null);
-  const [longitude, setLongitude] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,13 +34,13 @@ function LocationSelectModal({
       styleInWhiteBox={{ padding: "16px" }}
     >
       <S.Container>
-        <form className="inputForm" onSubmit={handleSubmit}>
+        <form className="inputForm">
           <S.Input
             placeholder="검색어를 입력하세요"
             onChange={handleSearchText}
             value={searchText}
           />
-          <S.Button type="submit">검색</S.Button>
+          <S.Button onClick={handleSubmit}>검색</S.Button>
         </form>
         <MapContainer
           searchPlace={searchPlace}

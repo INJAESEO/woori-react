@@ -1,14 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { useInput } from "../../../hooks/useInput";
 import LocationSelectModal from "./LocationSelectModal";
 import * as S from "./style";
 
-function Location() {
+function Location({
+  location,
+  setLocation,
+  place,
+  setPlace,
+  setLatitude,
+  setLongitude,
+  handleCategory,
+}) {
   const [isLocation, setIsLocation] = useState(false);
-  const [location, setLocation] = useState(null);
-  const [place, setPlace] = useState(null);
+
   const [isModalOn, setIsModalOn] = useState(false);
-  const [category, handleCategory, setCategory] = useInput([]);
 
   return (
     <>
@@ -18,6 +24,8 @@ function Location() {
         setLocation={setLocation}
         setPlace={setPlace}
         setIsLocation={setIsLocation}
+        setLatitude={setLatitude}
+        setLongitude={setLongitude}
       />
       <S.Container>
         {!isLocation && (
@@ -26,7 +34,7 @@ function Location() {
           </S.PlusButton>
         )}
         {isLocation && (
-          <>
+          <form>
             <S.LocationInput onClick={() => setIsModalOn(true)}>
               {location ? location : "위치를 입력하세요"}
             </S.LocationInput>
@@ -40,7 +48,7 @@ function Location() {
               <option value="기타">기타</option>
             </S.Select>
             <S.Input placeholder="장소" disabled value={place}></S.Input>
-          </>
+          </form>
         )}
       </S.Container>
     </>
