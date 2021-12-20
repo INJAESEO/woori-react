@@ -18,6 +18,8 @@ function CreateProfile() {
     const [selected, setSelected] = useState("man")
     const navigate = useNavigate();
 
+    
+
     const accessToken = useContext(CookieContext)
 
     // export const idContext = createContext()
@@ -45,7 +47,7 @@ function CreateProfile() {
                 console.log(idCode)
                 //  
             })
-            .then(() => navigate("/connect2"))
+            .then(() => navigate("/chkresponse"))
             // .then((res) => {
             //     // console.log(res.data.id_code)
             // })
@@ -96,7 +98,7 @@ function CreateProfile() {
   
     return (
         <div>
-            <h3>연결성공! 프로필을 입력해주세요</h3>
+            <h3> 프로필을 입력해주세요</h3>
           
             {/* src속성에 state를 부여하여 미리보기  */}
             <img src={previewImg} alter="프로필사진입니다."/>
