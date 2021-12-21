@@ -39,8 +39,10 @@ function Home() {
       navigate("/chkresponse")
     } else if (check === "null") {
       navigate("/chkprofile")
-    } 
-  })
+    } else if (check === "isBoth") {
+      navigate("/")
+    }
+  }, [])
 
   const getPlaces = async () => {
     await axios({
