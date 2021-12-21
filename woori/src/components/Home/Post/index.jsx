@@ -42,7 +42,7 @@ const Post = ({ place, placeLength }) => {
     }).then((res) => setPostList(() => res.data));
   };
 
-  if (!profile) {
+  if (!profile || !network) {
     return <div>로딩중</div>;
   }
 
@@ -54,23 +54,23 @@ const Post = ({ place, placeLength }) => {
         dday={dday}
         handleDday={handleDday}
       />
-      <S.Container isOpen={isPostOpen} onClick={(e) => e.stopPropagation}>
+      <S.Container isOpen={isPostOpen} onClick={(e) => e.stopPropagation()}>
         <S.Background
           onClick={() => setIsPostOpen((isPostOpen) => !isPostOpen)}
         />
         <S.Header>
           <S.Dday onClick={() => setIsDdayModalOpen(true)}>
-            {!dday ? "😍입력하세요😍 " : "😍" + dday + "😍"}
+            {!network.dday ? "😍입력하세요😍 " : "😍" + network.dday + "😍"}
           </S.Dday>
           <S.ProfileWrapper>
             <div>
-              <img src={network[0].profile_img} />
-              <p>{network[0].nickname}</p>
+              <img src={network.profiles[0].profile_img} />
+              <p>{network.profiles[0].nickname}</p>
             </div>
             <p>❤️</p>
             <div>
-              <img src={network[1].profile_img} />
-              <p>{network[1].nickname}</p>
+              <img src={network.profiles[1].profile_img} />
+              <p>{network.profiles[1].nickname}</p>
             </div>
           </S.ProfileWrapper>
           <S.PlaceCount>같이 간 플레이스 개수: {placeLength}</S.PlaceCount>

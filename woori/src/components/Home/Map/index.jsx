@@ -82,13 +82,13 @@ const Map = ({ placeList, setPlace }) => {
       if (status === kakao.maps.services.Status.OK) {
         var infoDiv = document.getElementById("centerAddr");
 
-        for (var i = 0; i < result.length; i++) {
-          // 행정동의 region_type 값은 'H' 이므로
-          if (result[i].region_type === "H") {
-            infoDiv.innerHTML = result[i].address_name;
-            break;
-          }
-        }
+        // for (var i = 0; i < result.length; i++) {
+        //   // 행정동의 region_type 값은 'H' 이므로
+        //   if (result[i].region_type === "H") {
+        //     infoDiv.innerHTML = result[i].address_name;
+        //     break;
+        //   }
+        // }
       }
     }
   };
