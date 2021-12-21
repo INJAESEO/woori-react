@@ -9,6 +9,8 @@ import Home from "../components/Home";
 import Connect2 from "../components/Auth/Connect";
 import PageNotFound from "../components/PageNotFound";
 import New from "../components/New";
+import List from "../components/Contents/List";
+import Detail from "../components/Contents/Detail";
 
 const Router = () => {
   return (
@@ -27,6 +29,8 @@ const Router = () => {
         {/* <Route path="/page1/*" element={<Page1 />} />
         <Route path="/page2/*" element={<Page2 />} /> */}
         <Route path="/*" element={<PageNotFound />} />
+        <Route path="/list" element={<List />} />
+        <Route path="/detail" element={<Detail />} />
       </Routes>
     </BrowserRouter>
   );
