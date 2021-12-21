@@ -3,9 +3,10 @@ import styled from "styled-components";
 export const Container = styled.div`
   position: relative;
   padding: 12px;
+  overflow: scroll;
 `;
 
-export const Button = styled.div`
+export const Button = styled.button`
   width: 100%;
   height: 44px;
   background-color: #c4c4c4;
@@ -15,4 +16,5 @@ export const Button = styled.div`
   align-items: center;
   justify-content: center;
   font-weight: 700;
+  cursor: pointer;
 `;

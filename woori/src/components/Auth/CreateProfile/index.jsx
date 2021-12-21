@@ -1,13 +1,14 @@
-import React, { useState, useContext, createContext} from 'react';
+import React, { useState, useContext, createContext, useEffect} from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom"
-import { CookieContext } from '../../../App';
+import { CookieContext, NicknameContext, SetNicknameContext } from '../../../App';
 import Connect from '../Connect';
 
 
 
 
 function CreateProfile() {
+
     
     const [profileImg, setProfileImg] = useState()
     const [previewImg, setPreviewImg] = useState()
@@ -17,17 +18,11 @@ function CreateProfile() {
     // select에서는 디폴트값이 필요하다
     const [selected, setSelected] = useState("man")
     const navigate = useNavigate();
-
     const accessToken = useContext(CookieContext)
+    const [isBlocking, setIsBlocking] = useState(false)
 
-    // export const idContext = createContext()
-    
-
-    // console.log(accessToken.token)
 
     const createProfile = async (formData) => {
-        
-
         axios({
             method: 'POST',
             url: "/user-api/profile/",
@@ -45,7 +40,7 @@ function CreateProfile() {
                 console.log(idCode)
                 //  
             })
-            .then(() => navigate("/connect2"))
+            .then(() => navigate("/chkresponse"))
             // .then((res) => {
             //     // console.log(res.data.id_code)
             // })
@@ -96,7 +91,7 @@ function CreateProfile() {
   
     return (
         <div>
-            <h3>연결성공! 프로필을 입력해주세요</h3>
+            <h3> 프로필을 입력해주세요</h3>
           
             {/* src속성에 state를 부여하여 미리보기  */}
             <img src={previewImg} alter="프로필사진입니다."/>

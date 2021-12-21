@@ -65,7 +65,7 @@ export const ContentInput = styled.textarea`
   border: none;
   background-color: #e3e3e3;
   width: 100%;
-  height: 216px;
+  height: 100px;
   padding: 10px;
   line-height: 19px;
 `;

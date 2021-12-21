@@ -12,7 +12,9 @@ function Login() {
 
     let navigate = useNavigate()
 
+   
     const setCookie = useContext(SetCookieContext)
+  
 
     const login = async (userData) => {
         const response = await axios({
@@ -26,9 +28,10 @@ function Login() {
                 const accessToken = res.data.token;
                 setCookie('token', accessToken)
             })
-            .then(() =>
-                // 이미 프로필설정과 연결을 마친 경우, 조건부렌더링
-                navigate("/createprofile"))
+            .then(() => {
+                navigate("/chkprofile")
+            }
+                )
             .catch((err) => console.log(err));
         return response
     }
@@ -56,7 +59,6 @@ function Login() {
 
 
     return (
-        
         <div>
             <h3>로그인해주세요</h3>
 

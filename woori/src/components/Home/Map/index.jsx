@@ -1,39 +1,19 @@
 /*global kakao*/
 import React, { useEffect, useRef } from "react";
 import * as S from "./style";
+import { useCheck } from "../../../hooks/useCheck";
+import { useNavigate } from "react-router-dom";
 
-export const markerdata = [
-  {
-    title: "고려대학교 서울캠퍼스",
-    lat: 37.5898422803883,
-    lng: 127.031685000726,
-  },
-  {
-    title: "하남돼지집",
-    lat: 37.620842424005616,
-    lng: 127.1583774403176,
-  },
-  {
-    title: "수유리우동",
-    lat: 37.624915253753194,
-    lng: 127.15122688059974,
-  },
-  {
-    title: "맛닭꼬",
-    lat: 37.62456273069659,
-    lng: 127.15211256646381,
-  },
-];
-
-const Map = ({ location }) => {
+const Map = ({ placeList, setPlace }) => {
   const container = useRef(null);
+
   useEffect(() => {
     mapscript();
   }, []);
 
   const mapscript = () => {
     let options = {
-      center: new kakao.maps.LatLng(location.latitude, location.longitude),
+      center: new kakao.maps.LatLng(37.5898422803883, 127.031685000726),
       level: 5,
     };
 
@@ -41,17 +21,17 @@ const Map = ({ location }) => {
     const map = new kakao.maps.Map(container.current, options);
     var geocoder = new kakao.maps.services.Geocoder();
 
-    markerdata.forEach((el) => {
+    placeList.forEach((el) => {
       // 마커를 생성합니다
       const marker = new kakao.maps.Marker({
         //마커가 표시 될 지도
         map: map,
         //마커가 표시 될 위치
-        position: new kakao.maps.LatLng(el.lat, el.lng),
+        position: new kakao.maps.LatLng(el.latitude, el.longitude),
       });
       // 마커에 표시할 인포윈도우를 생성합니다
       var infowindow = new kakao.maps.InfoWindow({
-        content: el.title, // 인포윈도우에 표시할 내용
+        content: el.name, // 인포윈도우에 표시할 내용
       });
 
       // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
@@ -69,44 +49,11 @@ const Map = ({ location }) => {
       );
       // 마커에 클릭 이벤트를 등록한다 (우클릭 : rightclick)
       kakao.maps.event.addListener(marker, "click", function () {
-        console.log(marker.n.La); //위도
-        console.log(marker.n.Ma); //경도
+        setPlace(() => el.id);
       });
 
       // 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
       searchAddrFromCoords(map.getCenter(), displayCenterInfo);
-
-      // 지도를 클릭했을 때 클릭 위치 좌표에 대한 주소정보를 표시하도록 이벤트를 등록합니다
-      kakao.maps.event.addListener(map, "click", function (mouseEvent) {
-        searchDetailAddrFromCoords(
-          mouseEvent.latLng,
-          function (result, status) {
-            if (status === kakao.maps.services.Status.OK) {
-              var detailAddr = !!result[0].road_address
-                ? "<div>도로명주소 : " +
-                  result[0].road_address.address_name +
-                  "</div>"
-                : "";
-              detailAddr +=
-                "<div>지번 주소 : " + result[0].address.address_name + "</div>";
-
-              var content =
-                '<div class="bAddr">' +
-                '<span class="title">법정동 주소정보</span>' +
-                detailAddr +
-                "</div>";
-
-              // 마커를 클릭한 위치에 표시합니다
-              marker.setPosition(mouseEvent.latLng);
-              marker.setMap(map);
-
-              // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
-              infowindow.setContent(content);
-              infowindow.open(map, marker);
-            }
-          }
-        );
-      });
     });
 
     // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
@@ -133,23 +80,18 @@ const Map = ({ location }) => {
       geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);
     }
 
-    function searchDetailAddrFromCoords(coords, callback) {
-      // 좌표로 법정동 상세 주소 정보를 요청합니다
-      geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
-    }
-
     // 지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수입니다
     function displayCenterInfo(result, status) {
       if (status === kakao.maps.services.Status.OK) {
         var infoDiv = document.getElementById("centerAddr");
 
-        for (var i = 0; i < result.length; i++) {
-          // 행정동의 region_type 값은 'H' 이므로
-          if (result[i].region_type === "H") {
-            infoDiv.innerHTML = result[i].address_name;
-            break;
-          }
-        }
+        // for (var i = 0; i < result.length; i++) {
+        //   // 행정동의 region_type 값은 'H' 이므로
+        //   if (result[i].region_type === "H") {
+        //     infoDiv.innerHTML = result[i].address_name;
+        //     break;
+        //   }
+        // }
       }
     }
   };
