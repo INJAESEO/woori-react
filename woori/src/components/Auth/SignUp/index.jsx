@@ -75,8 +75,8 @@ function SignUp() {
 
   return (
     <>
-      <S.H3>우리두리에 잘 오셨어요!<br />
-        회원으로 가입해주세요</S.H3>
+      <S.Title>우리두리에 잘 오셨어요!<br />
+        회원으로 가입해주세요</S.Title>
       <S.Form onSubmit={onSubmitHandler}>
         <S.Input
           type="text"

@@ -33,6 +33,7 @@ const Body = styled.div`
   }
 `;
 
+
 function GlobalStyle({ children }) {
   return (
     <>

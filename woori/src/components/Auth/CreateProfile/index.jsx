@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom"
 import { CookieContext, NicknameContext, SetNicknameContext } from '../../../App';
 import Connect from '../Connect';
+import * as S from './style'
+
 
 
 
@@ -64,8 +66,13 @@ function CreateProfile() {
         console.log(e.target.files[0])
 
         // 이미지 미리보기
-        const imgUrl = URL.createObjectURL(imgFile);
-        // console.log(`FUCK ${profileImg}`)
+        // const binaryData = [];
+        // binaryData.push(imgFile);
+        // const imgUrl = URL.createObjectURL(new Blob(binaryData, {
+        //     type: "application/zip"
+        // }));
+
+        const imgUrl = URL.createObjectURL(imgFile)
         setPreviewImg(imgUrl)
     }
 
@@ -90,28 +97,32 @@ function CreateProfile() {
 
   
     return (
-        <div>
-            <h3> 프로필을 입력해주세요</h3>
+        <>
+            <S.Title> 프로필을 입력해주세요</S.Title>
           
             {/* src속성에 state를 부여하여 미리보기  */}
-            <img src={previewImg} alter="프로필사진입니다."/>
-            <form onSubmit={onSubmitHandler}>
-                <input type="file"
+            <S.Container>
+                <S.Img src={previewImg} alter="프로필사진입니다." />
+            </S.Container>
+            <S.Form onSubmit={onSubmitHandler}>
+                {/* <label for="profileImg">사진 찾기</label> */}
+                <S.InputImg type="file"
+                    id="profileImg"
                     accept="image/*"
                     name="profileImg"
                     onChange={onImgUploadHandler}
-                ></input>
-                <input type="text" placeholder="닉네임" onChange={(e)=>{setNickname(e.target.value)}}></input>
-                <select onChange={onSelectionHandler}>
+                ></S.InputImg>
+                <S.Input type="text" placeholder="닉네임" onChange={(e)=>{setNickname(e.target.value)}}></S.Input>
+                <S.Select onChange={onSelectionHandler}>
                     {/* <option value="남자">남자</option>
                     <option value="여자">여자</option> */}
                     {selectList.map((i) => {
                         return(<option value={i} key={i}>{i}</option>)
                     })}
-                </select>
-                <button>가입완료</button>
-            </form>
-        </div>
+                </S.Select>
+                <S.Button>가입완료</S.Button>
+            </S.Form>
+        </>
     );
 };
 

@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 // 쿠키사용을 위해 라이브러리 설치후 import
 import { useCookies } from 'react-cookie';
 import { SetCookieContext } from '../../../App';
+import * as S from './style'
+
 
 function Login() {
     const [username, setUsername] = useState("")
@@ -60,16 +62,16 @@ function Login() {
 
     return (
         <div>
-            <h3>로그인해주세요</h3>
+            <S.Title>로그인해주세요</S.Title>
 
-            <form onSubmit={onSubmitHandler}>
-                <input type="text" placeholder="아이디" onChange={(e) => {
+            <S.Form onSubmit={onSubmitHandler}>
+                <S.Input type="text" placeholder="아이디" onChange={(e) => {
                     console.log(e)
                     setUsername(e.target.value)
-                }}></input>
-                <input type="password" placeholder="비밀번호" onChange={(e)=>{setPassword(e.target.value)}}></input>
-                <button>로그인하기</button>
-            </form>
+                }}></S.Input>
+                <S.Input type="password" placeholder="비밀번호" onChange={(e)=>{setPassword(e.target.value)}}></S.Input>
+                <S.Button>로그인하기</S.Button>
+            </S.Form>
         </div>
     );
 };

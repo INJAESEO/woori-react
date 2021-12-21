@@ -18,6 +18,7 @@ function Footer({ type = "Home" }) {
       <S.Divider />
       <S.Section isHome={!isHome}>
         <Link to="/welcome" onClick={() => {
+          alert("로그아웃 되었습니다")
           logout()
           setIsHome(false)
         }}>
