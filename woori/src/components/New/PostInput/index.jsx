@@ -3,8 +3,15 @@ import * as S from "./style";
 import { ReactComponent as StarSVG } from "../../../assets/icon/star.svg";
 import Swiper from "../../common/Swiper";
 
-function PostInput({ handleTitle, handleContent, handleDate, star, setStar }) {
-  const [imgList, setImgList] = useState([]);
+function PostInput({
+  handleTitle,
+  handleContent,
+  handleDate,
+  star,
+  setStar,
+  imgList,
+  setImgList,
+}) {
   const [previewImgList, setPreviewImgList] = useState([]);
   const imgRef = useRef();
 

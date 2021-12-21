@@ -1,5 +1,4 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
-import { useCookies } from "react-cookie";
 import { CookieContext } from "../../App";
 import Header from "../common/Header";
 import Location from "./Location";
@@ -12,6 +11,7 @@ import { useInput } from "../../hooks/useInput";
 function New() {
   const accessToken = useContext(CookieContext);
   const [placeId, setPlaceId] = useState(null);
+  const [postId, setPostId] = useState(null);
   const navigate = useNavigate();
 
   const [location, setLocation] = useState(null);
@@ -25,6 +25,8 @@ function New() {
   const [content, handleContent, setContent] = useInput("");
   const [star, setStar] = useState(0);
 
+  const [imgList, setImgList] = useState([]);
+
   const createPlace = async (formData) => {
     await axios({
       method: "POST",
@@ -37,7 +39,6 @@ function New() {
       withCredentials: true,
     })
       .then((res) => {
-        console.dir(res);
         setPlaceId(() => res.data.id);
       })
       .catch((err) => {
@@ -57,12 +58,63 @@ function New() {
       withCredentials: true,
     })
       .then((res) => {
-        navigate(`/posts/${res.id}`);
+        console.dir(res.data);
+        setPostId(() => res.data.id);
       })
       .catch((err) => {
         console.dir(err);
       });
   };
+
+  const createPostImage = async (formData) => {
+    await axios({
+      method: "POST",
+      url: "http://localhost:8000/post-api/postimage/",
+      data: formData,
+      headers: {
+        Authorization: `Token ${accessToken.token}`,
+        "Content-Type": "multipart/form-data",
+      },
+      withCredentials: true,
+    })
+      .then((res) => {
+        console.dir(res.data);
+      })
+      .catch((err) => {
+        console.dir(err);
+      });
+  };
+
+  useEffect(() => {
+    if (placeId) {
+      const formPostData = new FormData();
+      formPostData.append("title", title);
+      formPostData.append("content", content);
+      formPostData.append("score", star);
+      formPostData.append("when", date);
+      formPostData.append("place", placeId);
+
+      createPost(formPostData);
+
+      return;
+    }
+  }, [placeId]);
+
+  useEffect(() => {
+    if (postId) {
+      const formImageData = new FormData();
+      for (let i = 0; i < imgList.length; i++) {
+        formImageData.append("images", imgList[i]);
+      }
+
+      formImageData.append("date_post", postId);
+
+      createPostImage(formImageData);
+      navigate(`/posts/${postId}`);
+
+      return;
+    }
+  }, [postId]);
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
@@ -96,16 +148,6 @@ function New() {
     }
     createPlace(formPlaceData);
 
-    console.log(placeId);
-
-    const formPostData = new FormData();
-    formPostData.append("title", title);
-    formPostData.append("content", content);
-    formPostData.append("score", star);
-    formPostData.append("when", date);
-    formPostData.append("place", placeId);
-
-    createPost(formPostData);
     return;
   };
 
@@ -129,6 +171,8 @@ function New() {
             handleDate={handleDate}
             star={star}
             setStar={setStar}
+            imgList={imgList}
+            setImgList={setImgList}
           />
           <S.Button>저장</S.Button>
         </form>
