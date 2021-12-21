@@ -1,7 +1,7 @@
 import React, { useState, useContext, createContext} from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom"
-import { CookieContext } from '../../../App';
+import { CookieContext, NicknameContext, SetNicknameContext } from '../../../App';
 import Connect from '../Connect';
 
 
@@ -21,6 +21,7 @@ function CreateProfile() {
     
 
     const accessToken = useContext(CookieContext)
+ 
 
     // export const idContext = createContext()
     
@@ -28,8 +29,6 @@ function CreateProfile() {
     // console.log(accessToken.token)
 
     const createProfile = async (formData) => {
-        
-
         axios({
             method: 'POST',
             url: "/user-api/profile/",

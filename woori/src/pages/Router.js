@@ -9,12 +9,14 @@ import Home from "../components/Home";
 import PageNotFound from "../components/PageNotFound";
 import New from "../components/New";
 import ChkResponse from "../components/Auth/Connect/ChkResponse";
+import ChkProfile from "../components/Auth/CreateProfile/ChkProfile";
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/chkresponse" element={<ChkResponse />} />
+        <Route path="chkprofile" element={<ChkProfile />} />
         <Route path="/" element={<Home />} />
         <Route path="/welcome" element={<Welcome />} />
         <Route path="/signup" element={<SignUp />} />
