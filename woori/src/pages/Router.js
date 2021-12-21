@@ -10,21 +10,86 @@ import PageNotFound from "../components/PageNotFound";
 import New from "../components/New";
 import ChkResponse from "../components/Auth/Connect/ChkResponse";
 import ChkProfile from "../components/Auth/CreateProfile/ChkProfile";
+import PrivateRoute from "../components/Permission/PrivateRoute";
+import PublicRoute from "../components/Permission/PublicRoute";
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/chkresponse" element={<ChkResponse />} />
-        <Route path="chkprofile" element={<ChkProfile />} />
-        <Route path="/" element={<Home />} />
-        <Route path="/welcome" element={<Welcome />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/createprofile" element={<CreateProfile />} />
-        <Route path="/connect" element={<Connect />} />
+        <Route
+          path="/chkresponse"
+          element={
+            <PrivateRoute>
+              <ChkResponse />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="chkprofile"
+          element={
+            <PrivateRoute>
+              <ChkProfile />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/"
+          element={
+            <PublicRoute>
+              <Home />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/welcome"
+          element={
+            <PublicRoute>
+              <Welcome />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <PublicRoute restricted={true}>
+              <SignUp />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <PublicRoute restricted={true}>
+              <Login />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/createprofile"
+          element={
+            <PrivateRoute>
+              <CreateProfile />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/connect"
+          element={
+            <PrivateRoute>
+              <Connect />
+            </PrivateRoute>
+          }
+        />
 
-        <Route path="/new" element={<New />} />
+        <Route
+          path="/new"
+          element={
+            <PrivateRoute>
+              <New />
+            </PrivateRoute>
+          }
+        />
 
         {/* <Route path="/page1/*" element={<Page1 />} />
         <Route path="/page2/*" element={<Page2 />} /> */}
