@@ -3,6 +3,13 @@ import Router from "./pages/Router";
 import GlobalStyle from "./GlobalStyle";
 import { CookiesProvider, useCookies } from "react-cookie";
 import { QueryClientProvider, QueryClient } from "react-query";
+import {
+  RecoilRoot,
+  atom,
+  selector,
+  useRecoilState,
+  useRecoilValue,
+} from "recoil";
 
 // 같은 변수값을 공유할 범위 설정
 export const SetCookieContext = createContext(() => {});
@@ -21,7 +28,9 @@ function App() {
           <SetCookieContext.Provider value={setCookie}>
             <CookiesProvider>
               <QueryClientProvider client={queryClient}>
-                <Router />
+                <RecoilRoot>
+                  <Router />
+                </RecoilRoot>
               </QueryClientProvider>
             </CookiesProvider>
           </SetCookieContext.Provider>
