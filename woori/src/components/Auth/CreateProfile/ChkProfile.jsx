@@ -15,30 +15,24 @@ function ChkProfile() {
     useEffect(() => {
         axios({
             method: 'get',
-            url: "/user-api/profile/",
+            url: "/user-api/check/",
             headers: {
                 "Authorization" : `Token ${accessToken.token}`
             }
         })
             .then((res) => {
-                console.log(res)
-                // setChkNickname(()=> res.data.profile_data.nickname)
-
-                if (res.data.Err) {
+                if (res.data.isProfile) {
                     return (
-                        <div>
-                            <CreateProfile />
-                        </div>
+                        navigate("/chkresponse")
                     )
-                } else if (res.data.profile_data) {
-                    navigate("/chkresponse")
+                } else {
+                    return <CreateProfile />
                 }
             })
             .catch((err) => {
-             console.log(err.data.Err)
+            //  console.log(err.data.Err)
         })
     }, [])
-
 
     // 컴포넌트 안에 return값 꼭 있어야 한다. 
         return (

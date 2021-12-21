@@ -1,4 +1,4 @@
-import React, { useState, useContext, createContext} from 'react';
+import React, { useState, useContext, createContext, useEffect} from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom"
 import { CookieContext, NicknameContext, SetNicknameContext } from '../../../App';
@@ -8,6 +8,7 @@ import Connect from '../Connect';
 
 
 function CreateProfile() {
+
     
     const [profileImg, setProfileImg] = useState()
     const [previewImg, setPreviewImg] = useState()
@@ -17,16 +18,9 @@ function CreateProfile() {
     // select에서는 디폴트값이 필요하다
     const [selected, setSelected] = useState("man")
     const navigate = useNavigate();
-
-    
-
     const accessToken = useContext(CookieContext)
- 
+    const [isBlocking, setIsBlocking] = useState(false)
 
-    // export const idContext = createContext()
-    
-
-    // console.log(accessToken.token)
 
     const createProfile = async (formData) => {
         axios({
