@@ -92,7 +92,7 @@ function Connect({response}) {
                     })
 
                 }}>취소</button>
-                {/* 상대방이 요청을 수락하면 요청자도 지도로 넘어가는 방법은..? */}
+                
             </div>
         )
     } else if (response === "me") {

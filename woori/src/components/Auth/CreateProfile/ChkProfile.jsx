@@ -13,16 +13,29 @@ function ChkProfile() {
     const { check } = useCheck()
     
     useEffect(() => {
-    if (check !== "isProfile") {
-      navigate("/chkprofile")
-    } else if (check !== "isCouple") {
-      navigate("/chkresponse")
-    } else if (check === "null") {
-      navigate("/chkprofile")
-    } else if (check === "isBoth") {
-      navigate("/")
+    if (check) {
+      if (check === "isBoth") {
+        navigate("/");
+        return;
+      }
+      if (check === "isNone") {
+        navigate("/createprofile");
+        return;
+      }
+      if (check === "isCouple") {
+        navigate("/");
+        return;
+      }
+      if (check === "isProfile") {
+        navigate("/chkresponse");
+        return;
+        }
+        if (check !== "isProfile") {
+            navigate("/createprofile");
+            return;
+        }
     }
-  }, [])
+  }, [check]);
 
     // useEffect(() => {
     //     axios({

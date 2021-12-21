@@ -18,15 +18,29 @@ const ChkResponse = () => {
 
     
     useEffect(() => {
-        if (check === "isBoth") {
-            navigate("/")
-        } else if (check !== "isProfile") {
-            return <CreateProfile/>
-        } else if (check !== "isCouple") {
-            return <Connect />
+    if (check) {
+      if (check === "isBoth") {
+        navigate("/");
+        return;
+      }
+      if (check === "isNone") {
+        navigate("/createprofile");
+        return;
+      }
+      if (check === "isCouple") {
+        navigate("/");
+        return;
+      }
+      if (check === "isProfile") {
+        navigate("/chkresponse");
+        return;
         }
+        if (check !== "isProfile") {
+            navigate("/createprofile");
+            return;
         }
-    ,[])
+    }
+  }, [check]);
 
     // useEffect(() => {
     //     axios({
