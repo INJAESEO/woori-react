@@ -21,7 +21,7 @@ export const useCheck = () => {
       setCheck("isCouple");
       return;
     }
-    setCheck(null);
+    setCheck("isNone");
   };
 
   const getCheckStatus = async () => {
