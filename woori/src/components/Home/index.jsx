@@ -6,6 +6,8 @@ import PlusModal from "./PlusModal";
 import Post from "./Post";
 import axios from "axios";
 import * as S from "./style";
+import { useNavigate } from 'react-router-dom';
+import { useCheck } from '../../hooks/useCheck';
 
 function Home() {
   const [isPlusOpen, setIsPlusOpen] = useState(false);
@@ -16,6 +18,10 @@ function Home() {
   const [place, setPlace] = useState(0);
   const [placeList, setPlaceList] = useState([]);
   const accessToken = useContext(CookieContext);
+  const navigate = useNavigate()
+  const { check } = useCheck()
+
+
   useEffect(() => {
     if (accessToken) {
       getPlaces();
@@ -25,6 +31,16 @@ function Home() {
   useEffect(() => {
     console.log(place);
   }, [place]);
+
+  useEffect(() => {
+    if (check !== "isProfile") {
+      navigate("/chkprofile")
+    } else if (check !== "isCouple") {
+      navigate("/chkresponse")
+    } else if (check === "null") {
+      navigate("/chkprofile")
+    } 
+  })
 
   const getPlaces = async () => {
     await axios({

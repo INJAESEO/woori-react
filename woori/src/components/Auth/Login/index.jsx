@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 // 쿠키사용을 위해 라이브러리 설치후 import
 import { useCookies } from 'react-cookie';
-import { ChkCoupleContext, NicknameContext, SetChkCoupleContext, SetCookieContext, SetNicknameContext } from '../../../App';
+import { SetCookieContext } from '../../../App';
 
 function Login() {
     const [username, setUsername] = useState("")
