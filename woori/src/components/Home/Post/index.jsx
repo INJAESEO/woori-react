@@ -1,26 +1,36 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CookieContext } from "../../../App";
 import { useInput } from "../../../hooks/useInput";
+import { useNetwork } from "../../../hooks/useNetwork";
+import { useProfile } from "../../../hooks/useProfile";
 
 import DdayModal from "./DdayModal";
 import * as S from "./style";
 
-const Post = ({ place }) => {
+const Post = ({ place, placeLength }) => {
   const [isPostOpen, setIsPostOpen] = useState(false);
   const [isDdayModalOpen, setIsDdayModalOpen] = useState(false);
   const [dday, handleDday, setDday] = useInput(null);
   const [query, setQuery] = useState(1);
   const [postList, setPostList] = useState([]);
   const accessToken = useContext(CookieContext);
+  const navigate = useNavigate();
+  const { profile } = useProfile();
+
+  const { network } = useNetwork();
 
   useEffect(() => {
     if (accessToken) {
       getPosts();
     }
-  }, [accessToken, place]);
+  }, [accessToken]);
+
+  useEffect(() => {
+    console.log(network);
+  }, [network]);
 
   const getPosts = async () => {
     await axios({
@@ -32,11 +42,16 @@ const Post = ({ place }) => {
     }).then((res) => setPostList(() => res.data));
   };
 
+  if (!profile) {
+    return <div>로딩중</div>;
+  }
+
   return (
     <>
       <DdayModal
         isOpen={isDdayModalOpen}
         setIsOpen={setIsDdayModalOpen}
+        dday={dday}
         handleDday={handleDday}
       />
       <S.Container isOpen={isPostOpen} onClick={(e) => e.stopPropagation}>
@@ -48,32 +63,41 @@ const Post = ({ place }) => {
             {!dday ? "😍입력하세요😍 " : "😍" + dday + "😍"}
           </S.Dday>
           <S.ProfileWrapper>
-            <img src="https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F37%2F201604181854386741.jpg" />
+            <div>
+              <img src={network[0].profile_img} />
+              <p>{network[0].nickname}</p>
+            </div>
             <p>❤️</p>
-            <img src="https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F37%2F201604181854386741.jpg" />
+            <div>
+              <img src={network[1].profile_img} />
+              <p>{network[1].nickname}</p>
+            </div>
           </S.ProfileWrapper>
-          <S.PlaceCount>같이 간 플레이스 개수: 36</S.PlaceCount>
+          <S.PlaceCount>같이 간 플레이스 개수: {placeLength}</S.PlaceCount>
         </S.Header>
         <S.PostListWrapper>
           {postList.map((post) => (
-            <Link to={`/posts/${post.id}`}>
-              <S.PostContainer>
-                <h3>
-                  {post.place.name} <span>{post.place.category}</span>
-                </h3>
-                <p>{post.when}</p>
+            <S.PostContainer
+              onClick={(e) => {
+                e.stopPropagation();
+                navigate(`/posts/${post.id}`);
+              }}
+            >
+              <h3>
+                {post.place.name} <span>{post.place.category}</span>
+              </h3>
+              <p>{post.when}</p>
+              <div>
+                <img
+                  src="https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F37%2F201604181854386741.jpg"
+                  alt=""
+                />
                 <div>
-                  <img
-                    src="https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F37%2F201604181854386741.jpg"
-                    alt=""
-                  />
-                  <div>
-                    <p>{post.title}</p>
-                    <p className="content">{post.content}</p>
-                  </div>
+                  <p>{post.title}</p>
+                  <p className="content">{post.content}</p>
                 </div>
-              </S.PostContainer>
-            </Link>
+              </div>
+            </S.PostContainer>
           ))}
         </S.PostListWrapper>
       </S.Container>
