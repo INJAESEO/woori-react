@@ -8,32 +8,24 @@ import { QueryClientProvider, QueryClient } from "react-query";
 export const SetCookieContext = createContext(() => {});
 export const CookieContext = createContext();
 
-export const NicknameContext = createContext();
-export const SetNicknameContext = createContext(() => {});
-
 const queryClient = new QueryClient();
 
 function App() {
   const [cookies, setCookie] = useCookies(["token"]);
-  const [nickname, setNickname] = useState("");
 
   return (
     <>
       {/* 같은 값을 사용할 구조를 감싼다 */}
       <GlobalStyle>
-        <SetNicknameContext.Provider value={setNickname}>
-          <NicknameContext.Provider value={nickname}>
-            <CookieContext.Provider value={cookies}>
-              <SetCookieContext.Provider value={setCookie}>
-                <CookiesProvider>
-                  <QueryClientProvider client={queryClient}>
-                    <Router />
-                  </QueryClientProvider>
-                </CookiesProvider>
-              </SetCookieContext.Provider>
-            </CookieContext.Provider>
-          </NicknameContext.Provider>
-        </SetNicknameContext.Provider>
+        <CookieContext.Provider value={cookies}>
+          <SetCookieContext.Provider value={setCookie}>
+            <CookiesProvider>
+              <QueryClientProvider client={queryClient}>
+                <Router />
+              </QueryClientProvider>
+            </CookiesProvider>
+          </SetCookieContext.Provider>
+        </CookieContext.Provider>
       </GlobalStyle>
     </>
   );

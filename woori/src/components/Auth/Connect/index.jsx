@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from 'react';
 import axios from 'axios';
-import { CookieContext } from '../../../App';
+import { ChkCoupleContext, CookieContext, SetChkCoupleContext } from '../../../App';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -8,10 +8,13 @@ import { useNavigate } from 'react-router-dom';
 
 function Connect({response}) {
     const accessToken = useContext(CookieContext);
+    
+
     const [request, setRequest] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [idCode, setIdCode] = useState("");
     const [partnerIdCode, setPartnerIdCode] = useState("");
+    const [isCouple, setIsCouple] = useState("");
     const idCodeInput = useRef("");
     const navigate = useNavigate();
     
@@ -25,10 +28,15 @@ function Connect({response}) {
             }
         })
             .then((res) => {
-                console.log(res.data.profile_data.id_code)
-                setIdCode(()=>res.data.profile_data.id_code)
+                // console.log(res.data.profile_data.id_code)
+                setIdCode(() => res.data.profile_data.id_code)
+                
         })
     }, [])
+
+    useEffect(() => { console.log(idCode) }, [idCode])
+
+    
     
     function onSubmitHandler() {
         axios({
@@ -84,6 +92,7 @@ function Connect({response}) {
                     })
 
                 }}>취소</button>
+                {/* 상대방이 요청을 수락하면 요청자도 지도로 넘어가는 방법은..? */}
             </div>
         )
     } else if (response === "me") {
@@ -100,8 +109,14 @@ function Connect({response}) {
                         }
                     })
                         .then((res) => {
+                            
+                            console.log(res.statusText);
+                            
                             alert("커플이 맺어졌습니다. 환영합니다!")
                             navigate("/")
+                            // setChkCouple(() => res.statusText)
+                            
+                            
                         })
                         .catch((err) => {
                         console.log(`수락 실패${err}`)
@@ -140,6 +155,9 @@ function Connect({response}) {
             </form>
         </div>
     );
+    
 };
+
+
 
 export default Connect;
