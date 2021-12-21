@@ -1,6 +1,8 @@
 /*global kakao*/
 import React, { useEffect, useRef } from "react";
 import * as S from "./style";
+import { useCheck} from '../../../hooks/useCheck'
+import { useNavigate } from 'react-router-dom';
 
 export const markerdata = [
   {
@@ -25,8 +27,25 @@ export const markerdata = [
   },
 ];
 
+
+
+
 const Map = ({ location, placeList, setPlace }) => {
   const container = useRef(null);
+  const navigate = useNavigate();
+  const { check } = useCheck()
+  
+  useEffect(() => {
+    if (check !== "isProfile") {
+      navigate("/chkprofile")
+    } else if (check !== "isCouple") {
+      navigate("/chkresponse")
+    } else if (check === "null") {
+      navigate("/chkprofile")
+    } 
+  })
+  
+  
   useEffect(() => {
     mapscript();
   }, []);
