@@ -9,3 +9,8 @@ export const profileState = atom({
   key: "profileState",
   default: null,
 });
+
+export const networkState = atom({
+  key: "networkState",
+  default: null,
+});

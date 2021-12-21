@@ -46,7 +46,7 @@ export const ProfileWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  > img {
+  img {
     width: 36px;
     height: 36px;
     object-fit: cover;
