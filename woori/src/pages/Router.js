@@ -12,6 +12,7 @@ import ChkResponse from "../components/Auth/Connect/ChkResponse";
 import ChkProfile from "../components/Auth/CreateProfile/ChkProfile";
 import PrivateRoute from "../components/Permission/PrivateRoute";
 import PublicRoute from "../components/Permission/PublicRoute";
+import Logout from "../components/Permission/logout";
 
 const Router = () => {
   return (
@@ -36,9 +37,9 @@ const Router = () => {
         <Route
           path="/"
           element={
-            <PublicRoute>
+            <PrivateRoute>
               <Home />
-            </PublicRoute>
+            </PrivateRoute>
           }
         />
         <Route
