@@ -38,17 +38,21 @@ function Home() {
         return;
       }
       if (check === "isNone") {
-        navigate("/chkprofile");
+        navigate("/createprofile");
         return;
       }
       if (check === "isCouple") {
-        navigate("/chkprofile");
+        navigate("/");
         return;
       }
       if (check === "isProfile") {
         navigate("/chkresponse");
         return;
-      }
+        }
+        if (check !== "isProfile") {
+            navigate("/createprofile");
+            return;
+        }
     }
   }, [check]);
 
