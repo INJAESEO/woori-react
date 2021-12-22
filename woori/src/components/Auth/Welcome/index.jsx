@@ -5,7 +5,7 @@ function Welcome (){
     return (
         <div>
             <S.Title>우리두리</S.Title>
-            <S.Paragraph>커플들의 데이트 아카이브</S.Paragraph>
+            <S.Paragraph>둘만의 데이트 아카이브</S.Paragraph>
 
 
             <S.Container>

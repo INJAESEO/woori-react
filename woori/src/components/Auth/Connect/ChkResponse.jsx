@@ -13,9 +13,26 @@ import { useNavigate } from "react-router-dom";
 
 const ChkResponse = () => {
   const navigate = useNavigate();
-
   const [response, setResponse] = useState("");
   const accessToken = useContext(CookieContext);
+
+  // useEffect(() => {
+  //     axios({
+  //         method: 'get',
+  //         url: '/user-api/check/',
+  //         headers: {
+  //             "Authorization" : `Token ${accessToken.token}`,
+  //         }
+  //     })
+  //         .then((res) => {
+  //             console.log(res.data.isCouple)
+  //             if (res.data.isCouple) {
+  //                 navigate("/");
+  //             } else {
+  //                 <Connect response={response} />
+  //             }
+  //     })
+  // })
 
   useEffect(() => {
     axios({
@@ -26,16 +43,11 @@ const ChkResponse = () => {
       },
     }).then((res) => {
       console.log(res);
-      console.log({ response });
       setResponse(() => res.data.receiver);
     });
   }, []);
 
-  return (
-    <div>
-      <Connect response={response} />
-    </div>
-  );
+  return <Connect response={response} />;
 };
 
 export default ChkResponse;

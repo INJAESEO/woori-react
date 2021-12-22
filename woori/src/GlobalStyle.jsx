@@ -19,6 +19,8 @@ const GlobalStyleWrapper = createGlobalStyle`
 
 const Container = styled.div`
   position: relative;
+  padding-left: 20px;
+  padding-right: 20px;
   @media (min-width: 375px) {
     background-color: lemonchiffon;
   }

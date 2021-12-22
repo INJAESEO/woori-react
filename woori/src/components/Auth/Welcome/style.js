@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components";
 
 export const Title = styled.h1`
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-top: 0px;
+  padding-top: 40px;
   text-align: center;
 `;
 
@@ -10,6 +10,8 @@ export const Paragraph = styled.p`
   margin-left: 20px;
   margin-right: 20px;
   text-align: center;
+  color: #a35414;
+  font-weight: bold;
 `;
 
 export const Description = styled.p`
