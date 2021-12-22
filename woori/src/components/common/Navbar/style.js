@@ -8,7 +8,7 @@ export const Container = styled.div`
   max-width: 375px;
   position: fixed;
   top: 0px;
-  background-color: lemonchiffon;
+  background-color: white;
   z-index: 100;
 
   display: flex;

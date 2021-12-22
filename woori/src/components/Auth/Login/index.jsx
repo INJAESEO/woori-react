@@ -31,7 +31,10 @@ function Login() {
       .then(() => {
         navigate("/chkprofile");
       })
-      .catch((err) => console.dir(err));
+      .catch((err) => {
+        alert("아이디 또는 비밀번호가 맞지 않습니다");
+        console.dir(err)
+      });
     return response;
   };
 

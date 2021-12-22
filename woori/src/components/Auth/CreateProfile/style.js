@@ -13,6 +13,7 @@ export const Input = styled.input`
   width: 222px;
   border-style: none;
   border-bottom: solid 3px #f5f5dc;
+  font-size: 12px;
 `;
 
 export const InputImg = styled.input`
@@ -21,6 +22,7 @@ export const InputImg = styled.input`
   height: 40px;
   width: 222px;
   border-style: none;
+  font-size: 12px;
 `;
 
 export const Form = styled.form`

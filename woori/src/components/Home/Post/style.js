@@ -60,7 +60,7 @@ export const ProfileWrapper = styled.div`
     border-radius: 50%;
     cursor: pointer;
     border-radius: 50%;
-    border: 1px solid;
+    border: 1px solid lightGrey;
   }
   > p {
     margin: 0 30px;

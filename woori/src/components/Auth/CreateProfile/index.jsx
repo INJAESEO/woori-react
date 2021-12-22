@@ -16,7 +16,7 @@ function CreateProfile() {
   const [previewImg, setPreviewImg] = useState();
   const [nickname, setNickname] = useState("");
   const [idCode, setIdCode] = useState("");
-  const selectList = ["man", "woman"];
+  const selectList = ["남자", "여자"];
   // select에서는 디폴트값이 필요하다
   const [selected, setSelected] = useState("man");
   const navigate = useNavigate();
