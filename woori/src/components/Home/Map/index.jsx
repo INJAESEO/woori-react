@@ -1,8 +1,6 @@
 /*global kakao*/
 import React, { useEffect, useRef } from "react";
 import * as S from "./style";
-import { useCheck } from "../../../hooks/useCheck";
-import { useNavigate } from "react-router-dom";
 
 const Map = ({ placeList, setPlace }) => {
   const container = useRef(null);

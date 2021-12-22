@@ -88,7 +88,7 @@ export const PostContainer = styled.div`
       margin-right: 10px;
     }
     .content {
-      height: 90px;
+      max-height: 90px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: normal;
