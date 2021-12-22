@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import { ChkCoupleContext, CookieContext, SetChkCoupleContext } from '../../../App';
 import { useNavigate } from 'react-router-dom';
+import * as S from './style'
 
 
 
@@ -144,15 +145,21 @@ function Connect({response}) {
             )
     } return (    
         <div>
-            <h3>서로의 초대코드를 입력하여 연결해주세요</h3>
-            <form >
-                <p>{idCode}</p>
-                <input type="text" placeholder="상대방의 초대코드를 입력해주세요" ref={idCodeInput}></input>
-                <button onClick={(e) => {
+            <S.Title>상대방의 초대코드를 입력하여 연결해주세요</S.Title>
+            <S.Form >
+                <S.Container>
+                    <S.Label for="idcode">내 초대코드</S.Label>
+                    <S.IdCode>{idCode}</S.IdCode>
+                </S.Container>
+                <S.Container>
+                    <S.Label for="partnerIdCode">상대방의 코드를 입력해주세요</S.Label>
+                    <S.Input type="text" ref={idCodeInput}></S.Input>
+                </S.Container>
+                <S.Button onClick={(e) => {
                     e.preventDefault()
                     onSubmitHandler()
-                }}>연결하기</button>
-            </form>
+                }}>연결하기</S.Button>
+            </S.Form>
         </div>
     );
     

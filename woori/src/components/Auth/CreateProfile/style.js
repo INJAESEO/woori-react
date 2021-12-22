@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components";
 
 export const Title = styled.h3`
-  margin-right: 20px;
-  margin-left: 20px;
+  margin-top: 0px;
+  padding-top: 40px;
   text-align: center;
 `;
 
@@ -32,7 +32,7 @@ export const Button = styled.button`
   background-color: #f5f5dc;
   color: #a35414;
   font-weight: bold;
-  width: 196px;
+  width: 150px;
   border-style: none;
   padding: 5px 10px;
   border-radius: 4px;

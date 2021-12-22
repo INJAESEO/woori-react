@@ -15,6 +15,9 @@ const ChkResponse = () => {
     const [response, setResponse] = useState("");
     const accessToken = useContext(CookieContext);
     const { check } = useCheck();
+    
+  
+  
 
     
     useEffect(() => {
@@ -32,13 +35,14 @@ const ChkResponse = () => {
         return;
       }
       if (check === "isProfile") {
+        console.log(check)
         navigate("/chkresponse");
         return;
-        }
-        if (check !== "isProfile") {
-            navigate("/createprofile");
-            return;
-        }
+      }
+      if (check !== "isProfile") {
+          navigate("/createprofile");
+          return;
+      }
     }
   }, [check]);
 
@@ -70,8 +74,8 @@ const ChkResponse = () => {
         })
             .then((res) => {
                 console.log(res)
-                console.log({ response })
                 setResponse(() => res.data.receiver)
+                
             })
     },[])
 
