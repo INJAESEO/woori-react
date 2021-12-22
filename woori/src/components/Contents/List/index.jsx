@@ -62,7 +62,7 @@ function List () {
             </S.Middle>
             <S.Main>
                 {list.map((element) => (
-                    <S.Mainbox onClick = {() => navigate("/detail")}>
+                    <S.Mainbox onClick = {() => navigate(`/posts/${element.id}`)}>
                     <div className="first">
                         <S.Title>
                             {element.title}
