@@ -65,13 +65,13 @@ function CreateProfile() {
     console.log(e.target.files[0]);
 
     // 이미지 미리보기
-    // const binaryData = [];
-    // binaryData.push(imgFile);
-    // const imgUrl = URL.createObjectURL(new Blob(binaryData, {
-    //     type: "application/zip"
-    // }));
+    const binaryData = [];
+    binaryData.push(imgFile);
+    const imgUrl = URL.createObjectURL(new Blob(binaryData, {
+        type: "application/zip"
+    }));
 
-    const imgUrl = URL.createObjectURL(imgFile);
+    // const imgUrl = URL.createObjectURL(imgFile);
     setPreviewImg(imgUrl);
   }
 

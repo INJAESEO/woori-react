@@ -15,7 +15,7 @@ export const Paragraph = styled.p`
 `;
 
 export const Description = styled.p`
-  font-size: 14px;
+  font-size: 12px;
 `;
 
 export const Container = styled.div`
@@ -36,9 +36,8 @@ export const Button = styled.button`
   cursor: pointer;
 `;
 
-export const Text = styled.span`
-  text-decoration-line: none;
+export const Text = styled.a`
   color: #a35414;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 12px;
 `;

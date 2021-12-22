@@ -31,7 +31,7 @@ function Login() {
       .then(() => {
         navigate("/chkprofile");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.dir(err));
     return response;
   };
 
