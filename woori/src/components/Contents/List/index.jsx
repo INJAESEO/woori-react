@@ -1,24 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router";
 import * as S from "./style";
+import axios from 'axios';
+import { CookieContext } from "../../../App";
 // import { useParams } from "react-router-dom";
 
 
 
 function List () {
     const navigate = useNavigate ();
-    let [한마디, 한마디변경] = useState ('');
+    const [한마디, 한마디변경] = useState ('');
+    const [list, listedit] = useState ([]);
 
+    const accessToken = useContext(CookieContext);
+
+    useEffect(() => {
+        if (accessToken) {
+          getList();
+        }
+    }, [accessToken]);
+
+    const getList = async () => {
+        await axios ({
+            method: "GET",
+            url: `http://localhost:8000/post-api/post/?filter=when&value=2021-12-21`,
+            headers: {
+                Authorization: `Token ${accessToken.token}`,
+            },
+        }).then((res) => {
+            console.log(res.data)
+            listedit(() => res.data)
+        });
+    }
 
     return (
         <S.Container>
             <S.Top>
                 <S.Header>
                     <S.Date>
-                        2020.10.13
+                        
                     </S.Date>
                     <S.Calendar>
-                        calendar
+                        <input type="date"></input>
+                        
                     </S.Calendar>
                 </S.Header>
             </S.Top>
@@ -28,7 +52,7 @@ function List () {
                     <S.Button onClick> + 오늘의 한 마디 </S.Button>
                 </div>
                 <div>
-                    <input onChange={ (e)=> { 한마디변경(e.target.value) } } />
+                    {/* <input onChange={ (e)=> { 한마디변경(e.target.value) } } /> */}
                 </div>
                 <div>
                     <div className="profileimage"></div>
@@ -37,43 +61,39 @@ function List () {
                 </div>
             </S.Middle>
             <S.Main>
-                <S.Mainbox>
+                {list.map((element) => (
+                    <S.Mainbox onClick = {() => navigate("/detail")}>
                     <div className="first">
                         <S.Title>
-                            너무나도 즐거웠던 이태리총각
+                            {element.title}
                         </S.Title>
                         <S.Placeinfo>
                             <S.Address>
-                                서울시 성북구 안암동
+                                {element.place.name}
                             </S.Address>
                             <S.Type>
-                                식당
+                                {element.place.category}
                             </S.Type>
                         </S.Placeinfo>
-                        
                     </div>
                     <S.Second>
                         <S.Image>
-                            hi
+                            {element.images[0]}
                         </S.Image>
                         <S.Context>
-                            우리가 벌써 3번째로 방문한 '이태리총각'!!!
-                            역시나 너무너무 맛있었당 ㅎㅎㅎㅎ여기는 파스타보다도 샐러드가 정말 맛있다
-                            다음에 또 오자!
+                            {element.content}
                         </S.Context>
                     </S.Second>
                     <S.Third>
                         <S.Profile>
-                            
+                            {element.author.profile_img}
                         </S.Profile>
                         <S.Name>
-                            서인재
+                            {element.author.nickname}
                         </S.Name>
                     </S.Third>
-                </S.Mainbox>
-                <S.Mainbox>
-
-                </S.Mainbox>
+                </S.Mainbox>    
+                ))}
             </S.Main>
         </S.Container>
         

@@ -1,7 +1,36 @@
-import React from "react";
+import React, {useEffect, useState, useContext} from "react";
+import { useNavigate } from "react-router";
 import * as S from "./style";
+import axios from 'axios';
+import { CookieContext } from "../../../App";
 
 function Detail () {
+
+    const navigate = useNavigate ();
+    const [ Detailpage, Detailedit] = useState ([]);
+    const accessToken = useContext(CookieContext);
+
+    const [postPk, setPostPk] = useState(0);
+
+    // useEffect(() => {
+    //     if (accessToken) {
+    //       getList();
+    //     }
+    // }, [accessToken]);
+
+    const getDetail = async () => {
+        await axios ({
+            method: "GET",
+            url: `http://localhost:8000/post-api/post/?filter=postpk&value=2`,
+        })
+
+    }
+
+
+
+
+
+    
     return (
         <div>
             <S.Back>

@@ -79,8 +79,8 @@ export const Image = styled.div`
     width: 90px;
     height: 90px;
     border-radius: 7px;
-    background-color: black;
     margin-right: 10px;
+    background-color: white;
 `
 
 export const Address = styled.div`
@@ -105,7 +105,7 @@ export const Third = styled.div`
 export const Profile = styled.div`
     width: 15px;
     height: 15px;
-    background-color: black;
+    background-color: white;
     border-radius: 10px;
 `
 export const Name = styled.div`
