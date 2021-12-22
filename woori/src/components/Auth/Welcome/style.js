@@ -4,6 +4,7 @@ export const Title = styled.h1`
   margin-top: 0px;
   padding-top: 40px;
   text-align: center;
+  font-family: "Single Day", cursive;
 `;
 
 export const Paragraph = styled.p`
@@ -41,3 +42,5 @@ export const Text = styled.a`
   font-weight: bold;
   font-size: 12px;
 `;
+
+export const Img = styled.img``;
