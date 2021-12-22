@@ -1,4 +1,4 @@
-import { atom } from "recoil";
+import { atom, selector } from "recoil";
 
 export const checkState = atom({
   key: "checkState",
@@ -7,10 +7,5 @@ export const checkState = atom({
 
 export const profileState = atom({
   key: "profileState",
-  default: null,
-});
-
-export const networkState = atom({
-  key: "networkState",
   default: null,
 });
