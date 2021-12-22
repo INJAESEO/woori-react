@@ -11,14 +11,9 @@ import CreateProfile from '../CreateProfile';
 
 const ChkResponse = () => {
     const navigate = useNavigate();
-
     const [response, setResponse] = useState("");
     const accessToken = useContext(CookieContext);
     const { check } = useCheck();
-    
-  
-  
-
     
     useEffect(() => {
     if (check) {
@@ -77,17 +72,9 @@ const ChkResponse = () => {
                 setResponse(() => res.data.receiver)
                 
             })
-    },[])
-
-
-   
-
-
-    return (
-        <div>
-            <Connect response={response} />
-        </div>
-    );
+    }, [])
+  
+    return <Connect response={response} />;
 };
 
 export default ChkResponse;
