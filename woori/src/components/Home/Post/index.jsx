@@ -16,7 +16,7 @@ const Post = ({ placePk, placeLength }) => {
   const [isDdayModalOpen, setIsDdayModalOpen] = useState(false);
   const [dday, handleDday, setDday] = useInput(null);
 
-  const [postList, setPostList] = useState([]);
+  const [postList, setPostList] = useState(null);
   const accessToken = useContext(CookieContext);
   const navigate = useNavigate();
   const { profile } = useProfile();
@@ -58,7 +58,7 @@ const Post = ({ placePk, placeLength }) => {
     }).then((res) => setNetwork(() => res.data));
   };
 
-  if (!profile || !network) {
+  if (!profile || !network || !postList) {
     return <div>로딩중</div>;
   }
 
@@ -104,10 +104,10 @@ const Post = ({ placePk, placeLength }) => {
               </h3>
               <p>{post.when}</p>
               <div>
-                <img
-                  src="https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F37%2F201604181854386741.jpg"
-                  alt=""
-                />
+                {post.images.length > 0 && (
+                  <img src={post.images[0].content} alt="" />
+                )}
+
                 <div>
                   <p>{post.title}</p>
                   <p className="content">{post.content}</p>
