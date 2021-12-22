@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ReactComponent as BackSVG } from "../../../assets/icon/header-back.svg";
 import * as S from "./style";
 
-function Header({ type = "main", content }) {
+function Header({ type = "main", content = "" }) {
   const navigate = useNavigate();
   switch (type) {
     case "main":

@@ -4,6 +4,7 @@ import { useLocation, useParams } from "react-router-dom";
 import * as S from "./style";
 import axios from "axios";
 import { CookieContext } from "../../../App";
+import Header from "../../common/Header";
 
 function Detail() {
   const navigate = useNavigate();
@@ -40,7 +41,7 @@ function Detail() {
 
   return (
     <div>
-      <S.Back></S.Back>
+      <Header />
       <S.Header>
         <S.Title>{post.title}</S.Title>
         <S.Info>
