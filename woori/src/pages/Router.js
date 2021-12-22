@@ -47,7 +47,7 @@ const Router = () => {
         <Route
           path="/welcome"
           element={
-            <PublicRoute>
+            <PublicRoute restricted={true}>
               <Welcome />
             </PublicRoute>
           }
