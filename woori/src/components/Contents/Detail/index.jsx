@@ -63,6 +63,7 @@ function Detail() {
               post.images.map((image) => (
                 <S.Imagedetail src={image.content} alt="" />
               ))}
+              
           </S.Image>
 
           <S.Context>{post.content}</S.Context>

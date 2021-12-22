@@ -75,7 +75,7 @@ export const Second = styled.div`
     display: flex;;
 `
 
-export const Image = styled.div`
+export const Image = styled.img`
     width: 90px;
     height: 90px;
     border-radius: 7px;
@@ -103,7 +103,7 @@ export const Third = styled.div`
     justify-content: right;
 `
 
-export const Profile = styled.div`
+export const Profile = styled.img`
     width: 15px;
     height: 15px;
     background-color: white;

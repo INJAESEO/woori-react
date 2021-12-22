@@ -11,6 +11,7 @@ function List () {
     const navigate = useNavigate ();
     const [한마디, 한마디변경] = useState ('');
     const [list, listedit] = useState ([]);
+    const [date, setDate] = useState ('');
 
     const accessToken = useContext(CookieContext);
 
@@ -77,17 +78,16 @@ function List () {
                         </S.Placeinfo>
                     </div>
                     <S.Second>
-                        <S.Image>
-                            {element.images[0]}
-                        </S.Image>
+                 
+                        <S.Image src={element.images[0]} alt="" />
+                        {/* <S.Image src={element.images[0].content} alt="" /> */}
+                            
                         <S.Context>
                             {element.content}
                         </S.Context>
                     </S.Second>
                     <S.Third>
-                        <S.Profile>
-                            {element.author.profile_img}
-                        </S.Profile>
+                        <S.Profile src={element.author.profile_img}></S.Profile>
                         <S.Name>
                             {element.author.nickname}
                         </S.Name>
