@@ -10,6 +10,12 @@ export const Container = styled.div`
   overflow: auto;
   z-index: 10;
   padding-bottom: 60px;
+  // Chrome, Safari and Opera
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  // IE and Edge
+  -ms-overflow-style: none;
   ${(props) =>
     props.isOpen &&
     css`
@@ -40,6 +46,7 @@ export const Dday = styled.p`
   margin: 0;
   cursor: pointer;
   z-index: 120;
+  font-size: 12px;
 `;
 
 export const ProfileWrapper = styled.div`
@@ -52,13 +59,29 @@ export const ProfileWrapper = styled.div`
     object-fit: cover;
     border-radius: 50%;
     cursor: pointer;
+    border-radius: 50%;
+    border: 1px solid;
   }
   > p {
     margin: 0 30px;
   }
+  > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    > p {
+      font-weight: bold;
+    }
+  }
 `;
 
-export const PlaceCount = styled.div``;
+export const PlaceCount = styled.div`
+  font-size: 12px;
+  font-weight: bold;
+  > span {
+    color: #a35414;
+  }
+`;
 
 export const PostListWrapper = styled.div`
   display: flex;
@@ -72,15 +95,16 @@ export const PostListWrapper = styled.div`
 `;
 
 export const PostContainer = styled.div`
-  background-color: #e6e6e6;
-  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 10px 10px 30px 10px rgba(230, 230, 230, 0.9);
+  border-radius: 10px;
   width: 100%;
-  padding: 10px;
+  padding: 20px;
   cursor: pointer;
   z-index: 100;
   > div {
     display: flex;
-    align-items: center;
+    align-items: start;
     > img {
       width: 110px;
       height: 110px;
@@ -92,16 +116,38 @@ export const PostContainer = styled.div`
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: normal;
+      font-size: 10px;
+      margin-top: 10px;
+    }
+    .title {
+      font-size: 14px;
     }
   }
   > h3 {
     margin: 0;
     > span {
       font-size: 12px;
-      font-weight: normal;
+      font-weight: bold;
     }
   }
   p {
     margin: 0;
+  }
+`;
+
+export const PostHeader = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  > div {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    font-size: 12px;
+    margin-left: 20px;
+    color: #696969;
+  }
+  > h3 {
+    margin-top: 0;
   }
 `;

@@ -46,9 +46,9 @@ function DdayModal({ isOpen, setIsOpen, dday, handleDday }) {
       <S.Title>날짜를 입력해주세요!</S.Title>
       <form>
         <input type="date" onChange={handleDday} />
-        <button type="submit" onClick={onSubmitHandler}>
+        <S.Button type="submit" onClick={onSubmitHandler}>
           확인
-        </button>
+        </S.Button>
       </form>
     </Modal>
   );

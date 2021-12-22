@@ -91,7 +91,7 @@ const Post = ({ placePk, placeLength }) => {
               <p>{network.profiles[1].nickname}</p>
             </div>
           </S.ProfileWrapper>
-          <S.PlaceCount>같이 간 플레이스 개수: {placeLength}</S.PlaceCount>
+          <S.PlaceCount>같이 간 플레이스 개수: <span>{placeLength}</span></S.PlaceCount>
         </S.Header>
         <S.PostListWrapper>
           {postList.map((post) => (
@@ -101,17 +101,20 @@ const Post = ({ placePk, placeLength }) => {
                 navigate(`/posts/${post.id}`);
               }}
             >
-              <h3>
-                {post.place.name} <span>{post.place.category}</span>
-              </h3>
-              <p>{post.when}</p>
+              <S.PostHeader>
+                <h3>{post.place.name}</h3>
+                <div>
+                  <span>{post.place.category}</span>
+                  <span>{post.when}</span>
+                </div>
+              </S.PostHeader>
               <div>
                 {post.images.length > 0 && (
                   <img src={post.images[0].content} alt="" />
                 )}
 
                 <div>
-                  <p>{post.title}</p>
+                  <p className="title">{post.title}</p>
                   <p className="content">{post.content}</p>
                 </div>
               </div>

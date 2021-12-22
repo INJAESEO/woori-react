@@ -7,6 +7,7 @@ import axios from "axios";
 import * as S from "./style";
 import { useNavigate } from "react-router-dom";
 import { useInput } from "../../hooks/useInput";
+import Navbar from '../common/Navbar';
 
 function New() {
   const accessToken = useContext(CookieContext);

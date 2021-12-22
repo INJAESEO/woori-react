@@ -7,6 +7,7 @@ import logout from '../../Permission/logout';
 
 function Footer({ type = "Home" }) {
   const [isHome, setIsHome] = useState(true);
+  
   return (
     <S.Container>
       <S.Section isHome={isHome} onClick={() => setIsHome(true)}>
@@ -17,13 +18,9 @@ function Footer({ type = "Home" }) {
       </S.Section>
       <S.Divider />
       <S.Section isHome={!isHome}>
-        <Link to="/welcome" onClick={() => {
-          alert("로그아웃 되었습니다")
-          logout()
-          setIsHome(false)
-        }}>
+        <Link to="/posts">
           <LogoutSVG />
-          <div>로그아웃</div>
+          <div>목록</div>
         </Link>
       </S.Section>
     </S.Container>
