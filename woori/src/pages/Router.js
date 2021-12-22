@@ -120,8 +120,8 @@ const Router = () => {
             {/* <Route path="/page1/*" element={<Page1 />} />
         <Route path="/page2/*" element={<Page2 />} /> */}
             <Route path="/*" element={<PageNotFound />} />
-            <Route path="/list" element={<List />} />
-            <Route path="/detail" element={<Detail />} />
+            <Route path="/posts" element={<List />} />
+            <Route path="/posts/:id" element={<Detail />} />
           </>
         )}
       </Routes>
