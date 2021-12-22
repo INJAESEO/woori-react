@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as HomeSVG } from "../../../assets/icon/home.svg";
-import { ReactComponent as ChatSVG } from "../../../assets/icon/chat.svg";
+import { ReactComponent as LogoutSVG } from "../../../assets/icon/logout.svg";
 import * as S from "./style";
 import logout from '../../Permission/logout';
 
@@ -22,7 +22,7 @@ function Footer({ type = "Home" }) {
           logout()
           setIsHome(false)
         }}>
-          <ChatSVG />
+          <LogoutSVG />
           <div>로그아웃</div>
         </Link>
       </S.Section>
