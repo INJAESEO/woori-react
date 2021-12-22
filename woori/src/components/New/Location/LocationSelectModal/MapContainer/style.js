@@ -5,6 +5,10 @@ export const Container = styled.div`
   overflow: scroll;
   display: flex;
   flex-direction: column;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
 `;
 
 export const Map = styled.div`
@@ -17,6 +21,10 @@ export const ResultList = styled.div`
   width: 100%;
   height: 300px;
   overflow: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
   #pagination > a {
     margin: 6px;
   }
@@ -26,6 +34,7 @@ export const Result = styled.div`
   border-top: 1px solid #e3e3e3;
   padding: 10px;
   cursor: pointer;
+
   &:hover {
     background-color: #e6e6e6;
   }

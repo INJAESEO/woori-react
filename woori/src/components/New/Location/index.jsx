@@ -38,6 +38,7 @@ function Location({
             <S.LocationInput onClick={() => setIsModalOn(true)}>
               {location ? location : "위치를 입력하세요"}
             </S.LocationInput>
+            <S.Input placeholder="장소" disabled value={place}></S.Input>
             <S.Select onChange={handleCategory}>
               <option value="" disabled selected hidden>
                 카테고리(식당, 카페, 액티비티)
@@ -47,7 +48,6 @@ function Location({
               <option value="액티비티">액티비티</option>
               <option value="기타">기타</option>
             </S.Select>
-            <S.Input placeholder="장소" disabled value={place}></S.Input>
           </form>
         )}
       </S.Container>

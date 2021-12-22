@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   padding: 12px;
-  background: rgba(196, 196, 196, 0.2);
+  // background: rgba(196, 196, 196, 0.2);
   margin-bottom: 10px;
   form {
     display: flex;
@@ -12,14 +12,19 @@ export const Container = styled.div`
 `;
 
 export const Input = styled.input`
-  background-color: #ffff;
   border: none;
-  border-radius: 6px;
+  font-size: 12px;
   width: 100%;
   padding: 10px;
+  margin-top: 10px;
+  border-bottom: solid 3px #f5f5dc;
 `;
 
-export const ImageButton = styled.div``;
+export const ImageButton = styled.div`
+  margin-top: 10px;
+  font-size: 12px;
+  cursor: pointer;
+`;
 
 export const ImagePreviewWrapper = styled.div`
   /* display: flex;
@@ -43,7 +48,8 @@ export const StarWrapper = styled.div`
   padding: 10px;
   display: flex;
   align-items: center;
-  background-color: #c4c4c4;
+  border-radius: 4px;
+  border: 3px solid #f5f5dc;
   > svg {
     width: 20px;
     height: 20px;
@@ -62,8 +68,8 @@ export const StarWrapper = styled.div`
 `;
 
 export const ContentInput = styled.textarea`
-  border: none;
-  background-color: #e3e3e3;
+  border: 3px solid #f5f5dc;
+  border-top: none;
   width: 100%;
   height: 100px;
   padding: 10px;

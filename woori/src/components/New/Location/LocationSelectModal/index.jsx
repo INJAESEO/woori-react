@@ -30,7 +30,7 @@ function LocationSelectModal({
       isOpen={isOpen}
       setIsOpen={setIsOpen}
       closeButton={false}
-      style={{ padding: "16px" }}
+      style={{ padding: "16px"}}
       styleInWhiteBox={{ padding: "16px" }}
     >
       <S.Container>
