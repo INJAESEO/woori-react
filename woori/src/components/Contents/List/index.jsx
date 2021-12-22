@@ -1,15 +1,17 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import { useNavigate } from "react-router";
 import * as S from "./style";
 import axios from "axios";
 import { CookieContext } from "../../../App";
-// import { useParams } from "react-router-dom";
+import dayjs from "dayjs";
+import { useInput } from "../../../hooks/useInput";
 
 function List() {
   const navigate = useNavigate();
   const [한마디, 한마디변경] = useState("");
   const [list, listedit] = useState([]);
-  const [date, setDate] = useState("");
+  const [date, handleDate, setDate] = useInput(dayjs().format("YYYY-MM-DD"));
+  const ref = useRef();
 
   const accessToken = useContext(CookieContext);
 
@@ -17,12 +19,12 @@ function List() {
     if (accessToken) {
       getList();
     }
-  }, [accessToken]);
+  }, [accessToken, date]);
 
   const getList = async () => {
     await axios({
       method: "GET",
-      url: `http://localhost:8000/post-api/post/?filter=when&value=2021-12-21`,
+      url: `http://localhost:8000/post-api/post/?filter=when&value=${date}`,
       headers: {
         Authorization: `Token ${accessToken.token}`,
       },
@@ -38,7 +40,7 @@ function List() {
         <S.Header>
           <S.Date></S.Date>
           <S.Calendar>
-            <input type="date"></input>
+            <input type="date" value={date} onChange={handleDate}></input>
           </S.Calendar>
         </S.Header>
       </S.Top>
@@ -48,7 +50,7 @@ function List() {
             {" "}
             + 핫 플레이스 추가
           </S.Button>
-          <S.Button onClick> + 오늘의 한 마디 </S.Button>
+          {/* <S.Button onClick> + 오늘의 한 마디 </S.Button> */}
         </div>
         <div>
           {/* <input onChange={ (e)=> { 한마디변경(e.target.value) } } /> */}
