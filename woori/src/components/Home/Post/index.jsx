@@ -1,45 +1,61 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 import { CookieContext } from "../../../App";
 import { useInput } from "../../../hooks/useInput";
-import { useNetwork } from "../../../hooks/useNetwork";
+
 import { useProfile } from "../../../hooks/useProfile";
 
 import DdayModal from "./DdayModal";
 import * as S from "./style";
 
-const Post = ({ place, placeLength }) => {
+const Post = ({ placePk, placeLength }) => {
   const [isPostOpen, setIsPostOpen] = useState(false);
   const [isDdayModalOpen, setIsDdayModalOpen] = useState(false);
   const [dday, handleDday, setDday] = useInput(null);
-  const [query, setQuery] = useState(1);
+
   const [postList, setPostList] = useState([]);
   const accessToken = useContext(CookieContext);
   const navigate = useNavigate();
   const { profile } = useProfile();
-
-  const { network } = useNetwork();
+  const [network, setNetwork] = useState(null);
+  const [query, setQuery] = useState("?filter=all&value=all");
 
   useEffect(() => {
     if (accessToken) {
       getPosts();
+      getNetwork();
     }
-  }, [accessToken]);
+  }, [accessToken, isDdayModalOpen, query]);
 
   useEffect(() => {
-    console.log(network);
-  }, [network]);
+    console.log(placePk);
+    if (placePk) {
+      setQuery(() => `?filter=placepk&value=${placePk}`);
+      return;
+    }
+  }, [placePk]);
 
   const getPosts = async () => {
     await axios({
       method: "GET",
-      url: `http://localhost:8000/post-api/post/?filter=placepk&value=${place}`,
+      url: `http://localhost:8000/post-api/post/${query}`,
       headers: {
         Authorization: `Token ${accessToken.token}`,
       },
     }).then((res) => setPostList(() => res.data));
+  };
+
+  const getNetwork = async () => {
+    await axios({
+      method: "GET",
+      url: `http://localhost:8000/network-api/couplenet/`,
+      headers: {
+        Authorization: `Token ${accessToken.token}`,
+      },
+    }).then((res) => setNetwork(() => res.data));
   };
 
   if (!profile || !network) {
@@ -60,7 +76,7 @@ const Post = ({ place, placeLength }) => {
         />
         <S.Header>
           <S.Dday onClick={() => setIsDdayModalOpen(true)}>
-            {!network.dday ? "😍입력하세요😍 " : "😍" + network.dday + "😍"}
+            {!network.dday ? "😍입력하세요😍 " : "😍D+" + network.dday + "😍"}
           </S.Dday>
           <S.ProfileWrapper>
             <div>
