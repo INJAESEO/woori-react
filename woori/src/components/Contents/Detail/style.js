@@ -15,11 +15,10 @@ export const Header = styled.div`
   padding-top: 15px;
   padding-left: 15px;
   padding-right: 15px;
-  padding-bottom: 15px;
 `;
 
 export const Title = styled.div`
-  font-size: 25px;
+  font-size: 24px;
   font-weight: bold;
   display: flex;
   justify-content: center;
@@ -27,13 +26,47 @@ export const Title = styled.div`
 
 export const Info = styled.div`
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-  padding-left: 30px;
-  padding-right: 30px;
+  font-size: 15px;
+  padding-left: 18px;
+  padding-right: 18px;
   margin-top: 15px;
+  color: gray;
 `;
+
+export const InfoTop = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+`
+
+export const Left = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+`
+
+export const Placename = styled.div`
+    color: black;
+    font-size: 17px;
+    margin-right: 10px;
+`
+
+export const Category = styled.div`
+    color: #696969;
+    font-size: 14px;
+`
+export const Nthvisit = styled.div`
+    color: #A58989;
+    font-size: 15px;
+`
+
+export const Rating = styled.div`
+    font-size: 14px;
+    color: #696969;
+    margin-left: 5px;
+    padding-top: 10px;
+
+`
 
 export const Middle = styled.div`
   display: flex;
@@ -44,8 +77,8 @@ export const Middlebox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 95%;
-  padding: 20px;
+  
+  padding: 25px;
 `;
 
 export const Author = styled.div`
@@ -58,7 +91,7 @@ export const Profilepic = styled.img`
   width: 40px;
   height: 40px;
   border-radius: 30px;
-  background-color: black;
+
   margin-right: 15px;
 `;
 
@@ -73,6 +106,7 @@ export const Profilename = styled.div`
 export const Date = styled.div`
   width: 100%;
   font-size: 15px;
+  color: gray;
 `;
 
 export const Image = styled.div`
@@ -83,8 +117,8 @@ export const Image = styled.div`
 `;
 
 export const Imagedetail = styled.img`
-  width: 130px;
-  height: 130px;
+  width: 155px;
+  height: 155px;
   border-radius: 10px;
   background-color: black;
   margin-top: 20px;
@@ -93,7 +127,8 @@ export const Imagedetail = styled.img`
 
 export const Context = styled.div`
   width: 100%;
-  font-size: 15px;
+  font-size: 16px;
+  color: #595959;
 `;
 
 export const Bottom = styled.div`

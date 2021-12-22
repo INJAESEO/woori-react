@@ -45,8 +45,14 @@ function Detail() {
       <S.Header>
         <S.Title>{post.title}</S.Title>
         <S.Info>
-          <div className="Nthvisit">{post.place.visit_count}번째 방문</div>
-          <div className="rating">{post.score}</div>
+          <S.InfoTop>
+              <S.Left>
+                  <S.Placename>{post.place.name}</S.Placename>
+                  <S.Category>{post.place.category}</S.Category>
+              </S.Left>
+              <S.Nthvisit>{post.place.visit_count}번째 방문</S.Nthvisit>
+          </S.InfoTop>
+          <S.Rating>별점:{post.score}</S.Rating>
         </S.Info>
       </S.Header>
       <S.Middle>
@@ -69,7 +75,7 @@ function Detail() {
           <S.Context>{post.content}</S.Context>
         </S.Middlebox>
       </S.Middle>
-      <S.Bottom>
+      {/* <S.Bottom>
         <S.Commenter>
           <S.Commenterpic></S.Commenterpic>
           <S.Commentername>난여자</S.Commentername>
@@ -80,7 +86,7 @@ function Detail() {
       <S.Footer>
         <div className="input"></div>
         <div className="save">댓글</div>
-      </S.Footer>
+      </S.Footer> */}
     </div>
   );
 }
