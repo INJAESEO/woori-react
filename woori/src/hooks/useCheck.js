@@ -42,5 +42,5 @@ export const useCheck = () => {
     }
   }, [accessToken]);
 
-  return { check: check };
+  return { check: check, setCheck: setCheck };
 };

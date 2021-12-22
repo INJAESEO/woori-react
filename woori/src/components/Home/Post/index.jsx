@@ -76,7 +76,9 @@ const Post = ({ placePk, placeLength }) => {
         />
         <S.Header>
           <S.Dday onClick={() => setIsDdayModalOpen(true)}>
-            {!network.dday ? "😍입력하세요😍 " : "😍D+" + network.dday + "😍"}
+            {network.dday === "미설정"
+              ? "😍입력하세요😍 "
+              : "😍D+" + network.dday + "😍"}
           </S.Dday>
           <S.ProfileWrapper>
             <div>
