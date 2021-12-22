@@ -4,33 +4,44 @@ import * as S from "./style";
 import axios from 'axios';
 import { CookieContext } from "../../../App";
 
-function Detail () {
+function Detail ( ) {
 
     const navigate = useNavigate ();
-    const [ Detailpage, Detailedit] = useState ([]);
+    // const [ Detailpage, Detailedit ] = useState ([]);
     const accessToken = useContext(CookieContext);
 
-    const [postPk, setPostPk] = useState(0);
+    const [postPk, setPostpk] = useState(0);
+    const [query, setQuery] = useState([]);
 
-    // useEffect(() => {
-    //     if (accessToken) {
-    //       getList();
-    //     }
-    // }, [accessToken]);
+    useEffect(() => {
+        if (accessToken) {
+          getDetail();
+        }
+    }, [accessToken, query]);
+
+
+    useEffect(() => {
+        console.log(postPk);
+        if (postPk) {
+          setQuery(() => `?filter=postpk&value=${postPk}`);
+          return;
+        }
+      }, [postPk]);
 
     const getDetail = async () => {
         await axios ({
             method: "GET",
-            url: `http://localhost:8000/post-api/post/?filter=postpk&value=2`,
-        })
-
+            url: `http://localhost:8000/post-api/post/${query}`,
+            headers: {
+                Authorization: `Token ${accessToken.token}`,
+            },
+        }).then((res) => {
+            console.log(res.data)
+            setPostpk(() => res.data)
+        });
     }
 
 
-
-
-
-    
     return (
         <div>
             <S.Back>

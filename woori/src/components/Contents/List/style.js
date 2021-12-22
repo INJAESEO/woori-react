@@ -48,7 +48,7 @@ export const Main = styled.div`
 export const Mainbox = styled.div`
     width: 95%;
     height: 170px;
-    background-color: #F2F2F2;
+    background-color: #F6F6F6;
     border-radius: 7px;
     margin-top: 3px;
     margin-bottom: 3px;
@@ -84,22 +84,23 @@ export const Image = styled.div`
 `
 
 export const Address = styled.div`
-    font-size: 7px;
+    font-size: 12px;
 `
 
 export const Type = styled.div`
     font-size: 7px;
+    color: gray;
 `
 
 export const Context = styled.div`
     width: 60%;
     font-size: 12px;
+    color: #595959;
 `
 
 export const Third = styled.div`
     display: flex;
     justify-content: right;
-
 `
 
 export const Profile = styled.div`
@@ -110,4 +111,5 @@ export const Profile = styled.div`
 `
 export const Name = styled.div`
     font-size: 7px;
+    color: #595959;
 `
