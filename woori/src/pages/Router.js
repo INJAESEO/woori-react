@@ -127,8 +127,22 @@ const Router = () => {
               }
             />
             <Route path="/*" element={<PageNotFound />} />
-            <Route path="/posts" element={<List />} />
-            <Route path="/posts/:id" element={<Detail />} />
+            <Route
+              path="/posts"
+              element={
+                <PrivateRoute>
+                  <List />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/posts/:id"
+              element={
+                <PrivateRoute>
+                  <Detail />
+                </PrivateRoute>
+              }
+            />
           </>
         )}
       </Routes>

@@ -5,6 +5,8 @@ import * as S from "./style";
 import axios from "axios";
 import { CookieContext } from "../../../App";
 import Header from "../../common/Header";
+import Navbar from '../../common/Navbar';
+import Footer from '../../common/Footer';
 
 function Detail() {
   const navigate = useNavigate();
@@ -41,7 +43,7 @@ function Detail() {
 
   return (
     <div>
-      <Header />
+      <Navbar />
       <S.Header>
         <S.Title>{post.title}</S.Title>
         <S.Info>
@@ -89,6 +91,7 @@ function Detail() {
         <div className="input"></div>
         <div className="save">댓글</div>
       </S.Footer> */}
+      <Footer />
     </div>
   );
 }

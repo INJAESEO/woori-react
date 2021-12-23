@@ -5,6 +5,7 @@ import axios from "axios";
 import { CookieContext } from "../../../App";
 import dayjs from "dayjs";
 import { useInput } from "../../../hooks/useInput";
+import Footer from '../../common/Footer';
 
 function List() {
   const navigate = useNavigate();
@@ -35,6 +36,7 @@ function List() {
   };
 
   return (
+    <>
     <S.Container>
       <S.Top>
         <S.Header>
@@ -85,6 +87,8 @@ function List() {
         ))}
       </S.Main>
     </S.Container>
+    <Footer />
+    </>
   );
 }
 

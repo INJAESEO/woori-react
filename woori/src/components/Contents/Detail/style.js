@@ -34,40 +34,38 @@ export const Info = styled.div`
 `;
 
 export const InfoTop = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
 
 export const Left = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
 
 export const Placename = styled.div`
-    color: black;
-    font-size: 17px;
-    margin-right: 10px;
-`
+  color: black;
+  font-size: 17px;
+  margin-right: 10px;
+`;
 
 export const Category = styled.div`
-    color: #696969;
-    font-size: 12px;
-    
-`
+  color: #696969;
+  font-size: 12px;
+`;
 export const Nthvisit = styled.div`
-    color: #A58989;
-    font-size: 15px;
-`
+  color: #a58989;
+  font-size: 15px;
+`;
 
 export const Rating = styled.div`
-    font-size: 14px;
-    color: #696969;
-    margin-left: 5px;
-    padding-top: 3px;
-
-`
+  font-size: 14px;
+  color: #696969;
+  margin-left: 5px;
+  padding-top: 3px;
+`;
 
 export const Middle = styled.div`
   display: flex;
@@ -118,8 +116,7 @@ export const Upperimage = styled.div`
   width: 100%;
   flex-direction: row;
   align-items: left;
-
-`
+`;
 
 export const Image = styled.div`
   width: 100%;
@@ -128,7 +125,11 @@ export const Image = styled.div`
   justify-content: space-around;
   overflow: scroll;
   overflow-x: scroll;
-  
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  // IE and Edge
+  -ms-overflow-style: none;
 `;
 
 export const Imagedetail = styled.img`
