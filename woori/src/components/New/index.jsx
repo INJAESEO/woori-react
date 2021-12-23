@@ -7,7 +7,7 @@ import axios from "axios";
 import * as S from "./style";
 import { useNavigate } from "react-router-dom";
 import { useInput } from "../../hooks/useInput";
-import Navbar from '../common/Navbar';
+import Navbar from "../common/Navbar";
 
 function New() {
   const accessToken = useContext(CookieContext);
@@ -80,6 +80,7 @@ function New() {
     })
       .then((res) => {
         console.dir(res.data);
+        navigate(`/posts/${postId}`);
       })
       .catch((err) => {
         console.dir(err);
@@ -111,7 +112,6 @@ function New() {
       formImageData.append("date_post", postId);
 
       createPostImage(formImageData);
-      navigate(`/posts/${postId}`);
 
       return;
     }
