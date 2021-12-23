@@ -16,7 +16,7 @@ function CreateProfile() {
   const [previewImg, setPreviewImg] = useState();
   const [nickname, setNickname] = useState("");
   const [idCode, setIdCode] = useState("");
-  const selectList = ["남자", "여자"];
+  const selectList = ["man", "woman"];
   // select에서는 디폴트값이 필요하다
   const [selected, setSelected] = useState("man");
   const navigate = useNavigate();
@@ -50,6 +50,7 @@ function CreateProfile() {
         // 이미프로필있는 경우도 생각하자 !
         if (formData.profile_img === undefined) {
           alert("프로필 사진을 올려주세요");
+          console.dir(err)
         }
       });
   };
