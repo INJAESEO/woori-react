@@ -21,6 +21,21 @@ function Header({ type = "main", content = "" }) {
           <S.HeaderWhiteSpace />
         </>
       );
+    case "postDetail":
+      return (
+        <>
+          <S.HeaderBoard>
+            <S.IconsWrapper>
+              <S.IconBox onClick={() => navigate("/")}>
+                <BackSVG />
+              </S.IconBox>
+              {content}
+              <S.IconBox />
+            </S.IconsWrapper>
+          </S.HeaderBoard>
+          <S.HeaderWhiteSpace />
+        </>
+      );
     default:
       return <></>;
   }

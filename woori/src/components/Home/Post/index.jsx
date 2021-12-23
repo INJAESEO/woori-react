@@ -11,8 +11,7 @@ import { useProfile } from "../../../hooks/useProfile";
 import DdayModal from "./DdayModal";
 import * as S from "./style";
 
-const Post = ({ placePk, placeLength }) => {
-  const [isPostOpen, setIsPostOpen] = useState(false);
+const Post = ({ placePk, placeLength, isPostOpen, setIsPostOpen }) => {
   const [isDdayModalOpen, setIsDdayModalOpen] = useState(false);
   const [dday, handleDday, setDday] = useInput(null);
 
@@ -91,7 +90,9 @@ const Post = ({ placePk, placeLength }) => {
               <p>{network.profiles[1].nickname}</p>
             </div>
           </S.ProfileWrapper>
-          <S.PlaceCount>같이 간 플레이스 개수: <span>{placeLength}</span></S.PlaceCount>
+          <S.PlaceCount>
+            같이 간 플레이스 개수: <span>{placeLength}</span>
+          </S.PlaceCount>
         </S.Header>
         <S.PostListWrapper>
           {postList.map((post) => (

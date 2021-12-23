@@ -5,7 +5,7 @@ import * as S from "./style";
 import axios from "axios";
 import { CookieContext } from "../../../App";
 import Header from "../../common/Header";
-import Navbar from '../../common/Navbar';
+import Swiper from "../../common/Swiper";
 import Footer from '../../common/Footer';
 
 function Detail() {
@@ -18,7 +18,7 @@ function Detail() {
   const [post, setPost] = useState(null);
 
   useEffect(() => {
-    if (accessToken || postPk) {
+    if (accessToken && postPk) {
       getDetail();
     }
   }, [accessToken, postPk]);
@@ -43,16 +43,16 @@ function Detail() {
 
   return (
     <div>
-      <Navbar />
+      <Header type="postDetail" />
       <S.Header>
         <S.Title>{post.title}</S.Title>
         <S.Info>
           <S.InfoTop>
-              <S.Left>
-                  <S.Placename>{post.place.name}</S.Placename>
-                  <S.Category>{post.place.category}</S.Category>
-              </S.Left>
-              <S.Nthvisit>{post.place.visit_count}번째 방문</S.Nthvisit>
+            <S.Left>
+              <S.Placename>{post.place.name}</S.Placename>
+              <S.Category>{post.place.category}</S.Category>
+            </S.Left>
+            <S.Nthvisit>{post.place.visit_count}번째 방문</S.Nthvisit>
           </S.InfoTop>
           <S.Rating>별점: {post.score}</S.Rating>
         </S.Info>
@@ -68,14 +68,15 @@ function Detail() {
           </S.Author>
           <S.Upperimage>
             <S.Image>
-              {post.images.length > 0 &&
-                post.images.map((image) => (
-                  <S.Imagedetail src={image.content} alt="" />
-                ))}
+              <Swiper margin="10px">
+                {post.images.length > 0 &&
+                  post.images.map((image) => (
+                    <S.Imagedetail src={image.content} alt="" />
+                  ))}
+              </Swiper>
             </S.Image>
           </S.Upperimage>
-          
-    
+
           <S.Context>{post.content}</S.Context>
         </S.Middlebox>
       </S.Middle>
@@ -91,7 +92,7 @@ function Detail() {
         <div className="input"></div>
         <div className="save">댓글</div>
       </S.Footer> */}
-      <Footer />
+      <Footer/>
     </div>
   );
 }

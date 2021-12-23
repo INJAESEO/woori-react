@@ -133,8 +133,10 @@ export const Image = styled.div`
 `;
 
 export const Imagedetail = styled.img`
-  width: 155px;
-  height: 155px;
+  width: calc(80vw);
+  max-width: 300px;
+  height: calc(80vw);
+  max-height: 300px;
   border-radius: 10px;
   background-color: black;
   margin-top: 20px;

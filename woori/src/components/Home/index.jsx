@@ -6,11 +6,11 @@ import PlusModal from "./PlusModal";
 import Post from "./Post";
 import axios from "axios";
 import * as S from "./style";
-import Navbar from '../common/Navbar';
-
+import Navbar from "../common/Navbar";
 
 function Home() {
   const [isPlusOpen, setIsPlusOpen] = useState(false);
+  const [isPostOpen, setIsPostOpen] = useState(false);
 
   const [placePk, setPlacePk] = useState(0);
   const [placeList, setPlaceList] = useState(null);
@@ -36,14 +36,18 @@ function Home() {
   if (!placeList) return <div>로딩중</div>;
   return (
     <>
-      
       <PlusModal isOpen={isPlusOpen} setIsOpen={setIsPlusOpen} />
       <S.Container>
         <S.PlusButton onClick={() => setIsPlusOpen(true)}>+</S.PlusButton>
         <Map setPlace={setPlacePk} placeList={placeList} />
-        <Post placePk={placePk} placeLength={placeList.length} />
+        <Post
+          placePk={placePk}
+          placeLength={placeList.length}
+          isPostOpen={isPostOpen}
+          setIsPostOpen={setIsPostOpen}
+        />
       </S.Container>
-        <Navbar/>
+      <Navbar isPostOpen={isPostOpen} />
       <Footer />
     </>
   );

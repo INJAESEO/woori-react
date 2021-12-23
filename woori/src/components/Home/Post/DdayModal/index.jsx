@@ -44,12 +44,12 @@ function DdayModal({ isOpen, setIsOpen, dday, handleDday }) {
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
       <S.Title>날짜를 입력해주세요!</S.Title>
-      <form>
+      <S.Form>
         <input type="date" onChange={handleDday} />
         <S.Button type="submit" onClick={onSubmitHandler}>
           확인
         </S.Button>
-      </form>
+      </S.Form>
     </Modal>
   );
 }
