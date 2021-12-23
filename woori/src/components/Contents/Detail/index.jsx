@@ -6,7 +6,7 @@ import axios from "axios";
 import { CookieContext } from "../../../App";
 import Header from "../../common/Header";
 import Swiper from "../../common/Swiper";
-import Footer from '../../common/Footer';
+import Footer from "../../common/Footer";
 
 function Detail() {
   const navigate = useNavigate();
@@ -71,7 +71,9 @@ function Detail() {
               <Swiper margin="10px">
                 {post.images.length > 0 &&
                   post.images.map((image) => (
-                    <S.Imagedetail src={image.content} alt="" />
+                    <div>
+                      <S.Imagedetail src={image.content} alt="" />
+                    </div>
                   ))}
               </Swiper>
             </S.Image>
@@ -92,7 +94,7 @@ function Detail() {
         <div className="input"></div>
         <div className="save">댓글</div>
       </S.Footer> */}
-      <Footer/>
+      <Footer />
     </div>
   );
 }
