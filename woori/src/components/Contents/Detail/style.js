@@ -137,6 +137,7 @@ export const Imagedetail = styled.img`
   max-width: 300px;
   height: calc(80vw);
   max-height: 300px;
+  object-fit: cover;
   border-radius: 10px;
   background-color: black;
   margin-top: 20px;
