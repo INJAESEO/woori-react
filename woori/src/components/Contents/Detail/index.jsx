@@ -81,6 +81,7 @@ function Detail() {
 
           <S.Context>{post.content}</S.Context>
         </S.Middlebox>
+      <Footer />
       </S.Middle>
       {/* <S.Bottom>
         <S.Commenter>
@@ -94,7 +95,6 @@ function Detail() {
         <div className="input"></div>
         <div className="save">댓글</div>
       </S.Footer> */}
-      <Footer />
     </div>
   );
 }
