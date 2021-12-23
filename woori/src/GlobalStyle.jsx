@@ -20,8 +20,7 @@ const GlobalStyleWrapper = createGlobalStyle`
 
 const Container = styled.div`
   position: relative;
-  padding-left: 20px;
-  padding-right: 20px;
+
   @media (min-width: 375px) {
     background-color: lemonchiffon;
   }
@@ -31,11 +30,9 @@ const Body = styled.div`
   max-width: 375px;
   margin: 0 auto;
   background-color: white;
-  @media (min-width: 420px) {
-    min-height: 100vh;
-  }
-`;
 
+  min-height: 100vh;
+`;
 
 function GlobalStyle({ children }) {
   return (
