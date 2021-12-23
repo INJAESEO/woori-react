@@ -18,8 +18,8 @@ export const Header = styled.div`
 `;
 
 export const Title = styled.div`
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 23px;
+  font-weight: 900;
   display: flex;
   justify-content: center;
 `;
@@ -53,7 +53,8 @@ export const Placename = styled.div`
 
 export const Category = styled.div`
     color: #696969;
-    font-size: 14px;
+    font-size: 12px;
+    
 `
 export const Nthvisit = styled.div`
     color: #A58989;
@@ -64,27 +65,30 @@ export const Rating = styled.div`
     font-size: 14px;
     color: #696969;
     margin-left: 5px;
-    padding-top: 10px;
+    padding-top: 3px;
 
 `
 
 export const Middle = styled.div`
   display: flex;
   justify-content: center;
+  width: 100%;
+  padding: 15px;
 `;
 
 export const Middlebox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  
-  padding: 25px;
+  width: 100%;
+  padding: 12px;
 `;
 
 export const Author = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
+  align-items: center;
 `;
 
 export const Profilepic = styled.img`
@@ -105,15 +109,26 @@ export const Profilename = styled.div`
 
 export const Date = styled.div`
   width: 100%;
-  font-size: 15px;
+  font-size: 12px;
   color: gray;
 `;
+
+export const Upperimage = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: left;
+
+`
 
 export const Image = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  overflow: scroll;
+  overflow-x: scroll;
+  
 `;
 
 export const Imagedetail = styled.img`
@@ -123,6 +138,7 @@ export const Imagedetail = styled.img`
   background-color: black;
   margin-top: 20px;
   margin-bottom: 20px;
+  margin-right: 7px;
 `;
 
 export const Context = styled.div`

@@ -52,7 +52,7 @@ function Detail() {
               </S.Left>
               <S.Nthvisit>{post.place.visit_count}번째 방문</S.Nthvisit>
           </S.InfoTop>
-          <S.Rating>별점:{post.score}</S.Rating>
+          <S.Rating>별점: {post.score}</S.Rating>
         </S.Info>
       </S.Header>
       <S.Middle>
@@ -64,14 +64,16 @@ function Detail() {
               <S.Date>{post.when}</S.Date>
             </S.AuthorRight>
           </S.Author>
-          <S.Image>
-            {post.images.length > 0 &&
-              post.images.map((image) => (
-                <S.Imagedetail src={image.content} alt="" />
-              ))}
-              
-          </S.Image>
-
+          <S.Upperimage>
+            <S.Image>
+              {post.images.length > 0 &&
+                post.images.map((image) => (
+                  <S.Imagedetail src={image.content} alt="" />
+                ))}
+            </S.Image>
+          </S.Upperimage>
+          
+    
           <S.Context>{post.content}</S.Context>
         </S.Middlebox>
       </S.Middle>
