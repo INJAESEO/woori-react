@@ -185,3 +185,7 @@ export const Footer = styled.div`
   background-color: gray;
   position: fixed;
 `;
+
+export const Blank = styled.div`
+  height: 100px;
+`;

@@ -79,9 +79,13 @@ function Detail() {
             </S.Image>
           </S.Upperimage>
 
-          <S.Context>{post.content}</S.Context>
+          <S.Context>{post.content}
+          
+          </S.Context>
+          <S.Blank />
+          <Footer />
         </S.Middlebox>
-      <Footer />
+        
       </S.Middle>
       {/* <S.Bottom>
         <S.Commenter>
